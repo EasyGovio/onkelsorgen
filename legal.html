@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impressum & Datenschutz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Source+Serif+4:wght@300;400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root { --dark:#0D1B2A; --gold:#C9A84C; --cream:#F5F0E8; --muted:rgba(245,240,232,0.6); --border:rgba(201,168,76,0.15); }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    body { background:var(--dark); color:var(--cream); font-family:'Source Serif 4',serif; font-weight:300; line-height:1.85; padding:2rem 1.5rem 4rem; }
+    .container { max-width:740px; margin:0 auto; }
+    nav { display:flex; justify-content:space-between; align-items:center; margin-bottom:3rem; padding-bottom:1rem; border-bottom:1px solid var(--border); }
+    .back { color:var(--gold); text-decoration:none; font-family:'DM Mono',monospace; font-size:0.72rem; letter-spacing:0.12em; }
+    .lang-bar { display:flex; gap:0.4rem; }
+    .lang-btn { background:none; border:1px solid var(--border); color:var(--muted); font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.25rem 0.6rem; cursor:pointer; transition:all 0.2s; }
+    .lang-btn.active, .lang-btn:hover { color:var(--gold); border-color:var(--gold); }
+    h1 { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:300; font-style:italic; color:var(--gold); margin-bottom:2.5rem; }
+    h2 { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:300; color:var(--cream); margin:2rem 0 0.8rem; padding-top:1.5rem; border-top:1px solid var(--border); }
+    p { color:var(--muted); font-size:0.95rem; margin-bottom:0.8rem; }
+    strong { color:var(--cream); font-weight:400; }
+    .crisis-box { background:rgba(41,128,185,0.1); border:1px solid rgba(41,128,185,0.3); border-radius:8px; padding:1.2rem 1.5rem; margin:1.5rem 0; }
+    .crisis-box p { color:var(--cream); }
+    .crisis-line { margin:0.4rem 0; font-size:0.9rem; }
+    .section { margin-bottom:1rem; }
+    a { color:var(--gold); }
+  </style>
+</head>
+<body>
+<div class="container">
+  <nav>
+    <a href="index.html" class="back">← Zurück / Geri / Back</a>
+    <div class="lang-bar">
+      <button class="lang-btn active" onclick="setLang('de')" id="btn-de">DE</button>
+      <button class="lang-btn" onclick="setLang('tr')" id="btn-tr">TR</button>
+      <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+    </div>
+  </nav>
+
+  <div id="legal-content"></div>
+</div>
+
+<script>
+var T = {
+  de: {
+    title: "Impressum & Datenschutz",
+    sections: [
+      {
+        h: "Krisenhinweis",
+        body: '<div class="crisis-box"><p><strong>⚠️ Diese Plattform ersetzt keine professionelle psychologische oder psychiatrische Beratung.</strong></p><p style="margin-top:0.6rem;">Wenn Sie sich in einer Notlage befinden oder Gedanken haben, sich selbst oder anderen zu schaden, wenden Sie sich bitte sofort an eine der folgenden Stellen:</p><div class="crisis-line">🇩🇪 <strong>Telefonseelsorge:</strong> 0800 111 0 111 (24/7, kostenlos)</div><div class="crisis-line">🇩🇪 <strong>Nummer gegen Kummer:</strong> 0800 111 0 550 (24/7, kostenlos)</div><div class="crisis-line">🇹🇷 <strong>ALO Psikiyatri:</strong> 182 (7/24, ücretsiz)</div><div class="crisis-line">🌍 <strong>Befrienders Worldwide:</strong> <a href="https://www.befrienders.org" target="_blank">befrienders.org</a></div></div>'
+      },
+      {
+        h: "Impressum",
+        body: '<p><strong>Betreiber:</strong> AskMeAI Teknoloji Ltd. Şti.<br>Ticaret Sicil No: 23837 — Manisa, Türkiye<br>Vertreten durch: Mehmet Aydınlı<br>Kontakt: <a href="mailto:info@askmeai.io">info@askmeai.io</a></p><p><strong>Verantwortlich für den Inhalt:</strong> AskMeAI Teknoloji Ltd. Şti.</p>'
+      },
+      {
+        h: "Haftungsausschluss",
+        body: '<p>Diese Plattform dient ausschließlich dem Ausdruck persönlicher Gefühle und Gedanken. Die Inhalte stellen keine medizinische, psychologische oder rechtliche Beratung dar und ersetzen diese nicht.</p><p>Alle veröffentlichten Beiträge werden vor der Freischaltung moderiert. Dennoch übernimmt der Betreiber keine Haftung für die Richtigkeit, Vollständigkeit oder Aktualität der Nutzerinhalte.</p><p>Bei akuter Gefährdung — für sich selbst oder andere — sind die zuständigen Behörden oder Notfalldienste zu kontaktieren. Der Betreiber behält sich vor, in solchen Fällen die zuständigen Stellen zu informieren.</p>'
+      },
+      {
+        h: "Nutzungsbedingungen",
+        body: '<p>Die Nutzung dieser Plattform setzt die Akzeptanz folgender Regeln voraus:</p><p>• Keine Inhalte, die zu Gewalt, Selbstverletzung oder Diskriminierung aufrufen.<br>• Keine Beleidigungen, Hassreden oder politische Propaganda.<br>• Keine Nennung von real identifizierbaren Personen ohne deren Einwilligung.<br>• Alle Beiträge werden vor Veröffentlichung moderiert.<br>• Der Betreiber behält sich das Recht vor, Beiträge ohne Angabe von Gründen abzulehnen.</p>'
+      },
+      {
+        h: "Datenschutz (DSGVO)",
+        body: '<p><strong>Erhobene Daten:</strong> E-Mail-Adresse (zur Kontobestätigung), Nickname, Beitragsinhalt.</p><p><strong>Zweck:</strong> Kontoführung, Moderation und Plattformbetrieb.</p><p><strong>Speicherung:</strong> Daten werden auf sicheren Servern (Supabase) gespeichert. Die E-Mail-Adresse wird niemals öffentlich angezeigt.</p><p><strong>Weitergabe:</strong> Eine Weitergabe an Dritte erfolgt nur bei gesetzlicher Verpflichtung (z. B. bei akuter Gefährdungslage).</p><p><strong>Löschung:</strong> Auf Anfrage werden alle personenbezogenen Daten innerhalb von 30 Tagen gelöscht. Anfragen an: <a href="mailto:datenschutz@pacdi.de">datenschutz@pacdi.de</a></p><p><strong>Cookies:</strong> Diese Plattform verwendet keine Tracking-Cookies.</p>'
+      }
+    ]
+  },
+  tr: {
+    title: "Künye & Gizlilik",
+    sections: [
+      {
+        h: "Kriz Bildirimi",
+        body: '<div class="crisis-box"><p><strong>⚠️ Bu platform profesyonel psikolojik veya psikiyatrik danışmanlığın yerini tutmaz.</strong></p><p style="margin-top:0.6rem;">Kendinize veya başkalarına zarar verme düşünceleriniz varsa lütfen aşağıdaki hatlara başvurun:</p><div class="crisis-line">🇹🇷 <strong>ALO Psikiyatri Hattı:</strong> 182 (7/24, ücretsiz)</div><div class="crisis-line">🇩🇪 <strong>Telefonseelsorge:</strong> 0800 111 0 111 (7/24, ücretsiz)</div><div class="crisis-line">🌍 <strong>Befrienders Worldwide:</strong> <a href="https://www.befrienders.org" target="_blank">befrienders.org</a></div></div>'
+      },
+      {
+        h: "Künye",
+        body: '<p><strong>İşleten:</strong> AskMeAI Teknoloji Ltd. Şti.<br>Ticaret Sicil No: 23837 — Manisa, Türkiye<br>Temsil eden: Mehmet Aydınlı<br>İletişim: <a href="mailto:info@askmeai.io">info@askmeai.io</a></p>'
+      },
+      {
+        h: "Sorumluluk Reddi",
+        body: '<p>Bu platform yalnızca kişisel duygu ve düşüncelerin ifadesi için hizmet vermektedir. İçerikler tıbbi, psikolojik veya hukuki tavsiye niteliği taşımaz.</p><p>Tüm paylaşımlar yayınlanmadan önce moderatör onayından geçer. Bununla birlikte işleten, kullanıcı içeriklerinin doğruluğundan sorumlu tutulamaz.</p><p>Acil tehlike durumlarında yetkili birimler veya acil servisler aranmalıdır. İşleten, gerekli hallerde ilgili birimleri bilgilendirme hakkını saklı tutar.</p>'
+      },
+      {
+        h: "Kullanım Koşulları",
+        body: '<p>Bu platformu kullanmak aşağıdaki kuralların kabulünü gerektirir:</p><p>• Şiddete, kendine zarar vermeye veya ayrımcılığa teşvik eden içerik yasaktır.<br>• Hakaret, nefret söylemi veya siyasi propaganda kabul edilmez.<br>• Gerçek kişilerin rızası olmadan kimliği açık paylaşım yapılamaz.<br>• Tüm paylaşımlar moderatör onayından geçer.<br>• İşleten, gerekçe göstermeksizin paylaşımları reddetme hakkını saklı tutar.</p>'
+      },
+      {
+        h: "Gizlilik Politikası (DSGVO/KVKK)",
+        body: '<p><strong>Toplanan veriler:</strong> E-posta adresi (hesap doğrulama), takma ad, paylaşım içeriği.</p><p><strong>Amaç:</strong> Hesap yönetimi, moderasyon ve platform işletimi.</p><p><strong>Saklama:</strong> Veriler güvenli sunucularda (Supabase) saklanır. E-posta adresi hiçbir zaman herkese açık gösterilmez.</p><p><strong>Paylaşım:</strong> Veriler yalnızca yasal yükümlülük durumunda (örn. acil tehlike) üçüncü taraflarla paylaşılır.</p><p><strong>Silme:</strong> Talep üzerine tüm kişisel veriler 30 gün içinde silinir. Talep için: <a href="mailto:datenschutz@pacdi.de">datenschutz@pacdi.de</a></p><p><strong>Çerezler:</strong> Bu platform izleme çerezi kullanmaz.</p>'
+      }
+    ]
+  },
+  en: {
+    title: "Legal Notice & Privacy Policy",
+    sections: [
+      {
+        h: "Crisis Notice",
+        body: '<div class="crisis-box"><p><strong>⚠️ This platform does not replace professional psychological or psychiatric counseling.</strong></p><p style="margin-top:0.6rem;">If you are in crisis or having thoughts of harming yourself or others, please contact:</p><div class="crisis-line">🇩🇪 <strong>Telefonseelsorge:</strong> 0800 111 0 111 (24/7, free)</div><div class="crisis-line">🇹🇷 <strong>ALO Psychiatry Line:</strong> 182 (24/7, free)</div><div class="crisis-line">🌍 <strong>Befrienders Worldwide:</strong> <a href="https://www.befrienders.org" target="_blank">befrienders.org</a></div></div>'
+      },
+      {
+        h: "Legal Notice",
+        body: '<p><strong>Operator:</strong> AskMeAI Teknoloji Ltd. Şti.<br>Trade Register No: 23837 — Manisa, Turkey<br>Represented by: Mehmet Aydınlı<br>Contact: <a href="mailto:info@askmeai.io">info@askmeai.io</a></p>'
+      },
+      {
+        h: "Disclaimer",
+        body: '<p>This platform is intended solely for the expression of personal feelings and thoughts. Content does not constitute medical, psychological, or legal advice.</p><p>All posts are moderated before publication. The operator assumes no liability for the accuracy or completeness of user-generated content.</p><p>In cases of acute danger, please contact the relevant authorities or emergency services. The operator reserves the right to notify the appropriate authorities when necessary.</p>'
+      },
+      {
+        h: "Terms of Use",
+        body: '<p>Using this platform requires acceptance of the following rules:</p><p>• No content promoting violence, self-harm, or discrimination.<br>• No insults, hate speech, or political propaganda.<br>• No identifying real persons without their consent.<br>• All posts are reviewed by a moderator before publication.<br>• The operator reserves the right to reject posts without giving reasons.</p>'
+      },
+      {
+        h: "Privacy Policy (GDPR)",
+        body: '<p><strong>Data collected:</strong> Email address (account verification), nickname, post content.</p><p><strong>Purpose:</strong> Account management, moderation, and platform operation.</p><p><strong>Storage:</strong> Data is stored on secure servers (Supabase). Email addresses are never publicly displayed.</p><p><strong>Sharing:</strong> Data is shared with third parties only when legally required (e.g., acute danger situations).</p><p><strong>Deletion:</strong> All personal data deleted within 30 days upon request. Contact: <a href="mailto:datenschutz@pacdi.de">datenschutz@pacdi.de</a></p><p><strong>Cookies:</strong> This platform does not use tracking cookies.</p>'
+      }
+    ]
+  }
+};
+
+var currentLang = 'de';
+
+function setLang(lang) {
+  currentLang = lang;
+  var t = T[lang];
+  var html = '<h1>' + t.title + '</h1>';
+  t.sections.forEach(function(s) {
+    html += '<h2>' + s.h + '</h2><div class="section">' + s.body + '</div>';
+  });
+  document.getElementById('legal-content').innerHTML = html;
+  ['btn-de','btn-tr','btn-en'].forEach(function(id){
+    document.getElementById(id).classList.remove('active');
+  });
+  document.getElementById('btn-'+lang).classList.add('active');
+  document.documentElement.lang = lang;
+}
+
+var ul = (navigator.language || 'de').toLowerCase();
+if(ul.startsWith('tr')) setLang('tr');
+else if(ul.startsWith('en')) setLang('en');
+else setLang('de');
+</script>
+</body>
+</html>
