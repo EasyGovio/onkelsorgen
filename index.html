@@ -11,299 +11,69 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
   <style>
     :root {
-      --dark:    #1A0F0A;
-      --dark2:   #221408;
-      --amber:   #D4843A;
-      --amber-lt:rgba(212,132,58,0.12);
-      --cream:   #F5EFE0;
-      --muted:   rgba(245,239,224,0.65);
-      --border:  rgba(212,132,58,0.2);
-      --green:   #4A7C59;
+      --dark:#1A0F0A; --dark2:#221408; --amber:#D4843A;
+      --amber-lt:rgba(212,132,58,0.12); --cream:#F5EFE0;
+      --muted:rgba(245,239,224,0.65); --border:rgba(212,132,58,0.2); --green:#4A7C59;
     }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; background: var(--dark); }
-
-    body {
-      background: var(--dark);
-      color: var(--cream);
-      font-family: 'Source Serif 4', Georgia, serif;
-      font-weight: 300;
-      line-height: 1.8;
-      overflow-x: hidden;
-    }
-
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.1rem 3rem;
-      backdrop-filter: blur(16px);
-      background: rgba(26,15,10,0.92);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem; font-weight: 600;
-      color: var(--amber); text-decoration: none; letter-spacing: 0.04em;
-    }
-
-    .nav-logo span { font-style: italic; font-weight: 300; }
-
-    .lang-bar { display: flex; gap: 0.4rem; }
-    .lang-btn {
-      background: none; border: 1px solid rgba(255,255,255,0.1);
-      color: var(--muted); font-family: 'DM Mono', monospace;
-      font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
-      padding: 0.3rem 0.7rem; cursor: pointer; transition: all 0.25s;
-    }
-    .lang-btn:hover, .lang-btn.active {
-      color: var(--amber); border-color: var(--amber);
-      background: var(--amber-lt);
-    }
-
-    /* HERO */
-    .hero {
-      min-height: 80vh;
-      display: flex; flex-direction: column;
-      justify-content: center;
-      padding: 9rem 3rem 5rem;
-      position: relative; overflow: hidden;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 70% 60% at 30% 50%, rgba(212,132,58,0.07) 0%, transparent 65%);
-      pointer-events: none;
-    }
-
-    .hero-inner { max-width: 800px; }
-
-    .hero-eyebrow {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--amber); margin-bottom: 1.5rem; display: block;
-      opacity: 0; animation: fadeUp 0.9s ease 0.1s forwards;
-    }
-
-    .hero-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.8rem, 7vw, 5.5rem);
-      font-weight: 600; line-height: 1.1;
-      color: var(--cream); margin-bottom: 1rem;
-      opacity: 0; animation: fadeUp 0.9s ease 0.2s forwards;
-    }
-
-    .hero-title em { color: var(--amber); font-style: italic; font-weight: 300; }
-
-    .hero-tagline {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-      font-style: italic; color: var(--muted);
-      max-width: 520px; line-height: 1.7; margin-bottom: 2.5rem;
-      opacity: 0; animation: fadeUp 0.9s ease 0.35s forwards;
-    }
-
-    .hero-actions {
-      display: flex; gap: 1rem; flex-wrap: wrap;
-      opacity: 0; animation: fadeUp 0.9s ease 0.5s forwards;
-    }
-
-    .btn-primary {
-      background: var(--amber); color: var(--dark);
-      border: none; padding: 0.9rem 2rem;
-      font-family: 'Source Serif 4', serif; font-size: 0.95rem;
-      cursor: pointer; transition: all 0.25s; text-decoration: none;
-      display: inline-block; font-weight: 400;
-    }
-    .btn-primary:hover { background: #e8963f; transform: translateY(-2px); }
-
-    .btn-outline {
-      background: none; color: var(--amber);
-      border: 1px solid var(--border);
-      padding: 0.9rem 2rem;
-      font-family: 'Source Serif 4', serif; font-size: 0.95rem;
-      cursor: pointer; transition: all 0.25s; text-decoration: none;
-      display: inline-block; font-weight: 300;
-    }
-    .btn-outline:hover { border-color: var(--amber); background: var(--amber-lt); }
-
-    /* ABI CARD */
-    .abi-section {
-      max-width: 820px; margin: 0 auto; padding: 5rem 2rem;
-    }
-
-    .abi-card {
-      display: flex; gap: 2.5rem; align-items: flex-start;
-      background: var(--dark2);
-      border: 1px solid var(--border);
-      padding: 2.5rem;
-      margin-bottom: 3rem;
-    }
-
-    .abi-avatar {
-      width: 72px; height: 72px; flex-shrink: 0;
-      background: var(--amber-lt);
-      border: 2px solid var(--border);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 2rem;
-    }
-
-    .abi-meta {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--amber); margin-bottom: 0.5rem;
-    }
-
-    .abi-question {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem; font-style: italic;
-      color: var(--muted); margin-bottom: 1.2rem;
-      border-left: 2px solid var(--border); padding-left: 1rem;
-      line-height: 1.6;
-    }
-
-    .abi-answer {
-      font-size: 0.97rem; color: var(--cream);
-      line-height: 1.9;
-    }
-
-    .abi-answer p { margin-bottom: 1rem; }
-    .abi-answer strong { color: var(--amber); font-weight: 400; }
-
-    .abi-signature {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic; font-size: 1rem;
-      color: var(--amber); margin-top: 1.2rem;
-    }
-
-    /* COMMENTS */
-    .comments-toggle {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--muted); background: none; border: none;
-      cursor: pointer; padding: 0.4rem 0; display: flex;
-      align-items: center; gap: 0.5rem; margin-top: 1.5rem;
-      transition: color 0.2s;
-    }
-    .comments-toggle:hover { color: var(--amber); }
-
-    .comments-area {
-      margin-top: 1rem; padding-top: 1rem;
-      border-top: 1px solid var(--border); display: none;
-    }
-    .comments-area.open { display: block; }
-
-    .comment {
-      padding: 0.8rem 0;
-      border-bottom: 1px solid rgba(212,132,58,0.08);
-      font-size: 0.88rem; color: var(--muted);
-    }
-    .comment-nick {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.6rem; color: var(--amber);
-      letter-spacing: 0.1em; margin-bottom: 0.3rem;
-    }
-
-    /* CATEGORIES */
-    .cat-section {
-      background: var(--dark2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 3rem 2rem;
-    }
-
-    .cat-inner { max-width: 820px; margin: 0 auto; }
-
-    .cat-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem; font-weight: 300; font-style: italic;
-      color: var(--cream); margin-bottom: 1.5rem;
-    }
-
-    .cat-row { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-
-    .cat-chip {
-      border: 1px solid var(--border); color: var(--amber);
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem; letter-spacing: 0.1em;
-      padding: 0.4rem 1rem; cursor: pointer;
-      transition: all 0.2s; background: none;
-    }
-    .cat-chip:hover, .cat-chip.active {
-      background: var(--amber-lt); border-color: var(--amber);
-    }
-
-    /* ASK SECTION */
-    .ask-section {
-      max-width: 680px; margin: 0 auto; padding: 5rem 2rem;
-      text-align: center;
-    }
-
-    .ask-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
-      font-weight: 300; color: var(--cream); margin-bottom: 0.6rem;
-    }
-
-    .ask-sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; line-height: 1.7; }
-
-    .form-field {
-      width: 100%; background: rgba(255,255,255,0.04);
-      border: 1px solid var(--border); color: var(--cream);
-      font-family: 'Source Serif 4', serif; font-size: 0.95rem;
-      padding: 0.85rem 1.2rem; margin-bottom: 0.8rem;
-      outline: none; transition: border 0.2s;
-    }
-    .form-field:focus { border-color: var(--amber); }
-    .form-field::placeholder { color: rgba(245,239,224,0.25); }
-
-    textarea.form-field { min-height: 120px; resize: vertical; }
-
-    .form-note {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.62rem; letter-spacing: 0.08em;
-      color: var(--muted); margin-top: 0.8rem; line-height: 1.6;
-    }
-
-    /* FOOTER */
-    footer {
-      padding: 2.5rem 3rem;
-      border-top: 1px solid var(--border);
-      display: flex; justify-content: space-between;
-      align-items: center; flex-wrap: wrap; gap: 1rem;
-    }
-
-    .footer-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 600; font-size: 1rem; color: var(--amber);
-    }
-
-    .footer-note {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.62rem; letter-spacing: 0.08em; color: var(--muted);
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 680px) {
-      nav { padding: 1rem 1.2rem; }
-      .hero { padding: 7rem 1.5rem 4rem; }
-      .abi-card { flex-direction: column; gap: 1.2rem; padding: 1.5rem; }
-      .abi-section { padding: 3rem 1.2rem; }
-      footer { padding: 2rem 1.2rem; flex-direction: column; text-align: center; }
-    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;background:var(--dark);}
+    body{background:var(--dark);color:var(--cream);font-family:'Source Serif 4',Georgia,serif;font-weight:300;line-height:1.8;overflow-x:hidden;}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 3rem;backdrop-filter:blur(16px);background:rgba(26,15,10,0.92);border-bottom:1px solid var(--border);}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--amber);text-decoration:none;letter-spacing:0.04em;}
+    .nav-logo span{font-style:italic;font-weight:300;}
+    .lang-bar{display:flex;gap:0.4rem;}
+    .lang-btn{background:none;border:1px solid rgba(255,255,255,0.1);color:var(--muted);font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.3rem 0.7rem;cursor:pointer;transition:all 0.25s;}
+    .lang-btn:hover,.lang-btn.active{color:var(--amber);border-color:var(--amber);background:var(--amber-lt);}
+    .hero{min-height:80vh;display:flex;flex-direction:column;justify-content:center;padding:9rem 3rem 5rem;position:relative;overflow:hidden;border-bottom:1px solid var(--border);}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 30% 50%,rgba(212,132,58,0.07) 0%,transparent 65%);pointer-events:none;}
+    .hero-inner{max-width:800px;}
+    .hero-eyebrow{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--amber);margin-bottom:1.5rem;display:block;opacity:0;animation:fadeUp 0.9s ease 0.1s forwards;}
+    .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,7vw,5.5rem);font-weight:600;line-height:1.1;color:var(--cream);margin-bottom:1rem;opacity:0;animation:fadeUp 0.9s ease 0.2s forwards;}
+    .hero-title em{color:var(--amber);font-style:italic;font-weight:300;}
+    .hero-tagline{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2.5vw,1.5rem);font-style:italic;color:var(--muted);max-width:520px;line-height:1.7;margin-bottom:2.5rem;opacity:0;animation:fadeUp 0.9s ease 0.35s forwards;}
+    .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp 0.9s ease 0.5s forwards;}
+    .btn-primary{background:var(--amber);color:var(--dark);border:none;padding:0.9rem 2rem;font-family:'Source Serif 4',serif;font-size:0.95rem;cursor:pointer;transition:all 0.25s;text-decoration:none;display:inline-block;font-weight:400;}
+    .btn-primary:hover{background:#e8963f;transform:translateY(-2px);}
+    .btn-outline{background:none;color:var(--amber);border:1px solid var(--border);padding:0.9rem 2rem;font-family:'Source Serif 4',serif;font-size:0.95rem;cursor:pointer;transition:all 0.25s;text-decoration:none;display:inline-block;font-weight:300;}
+    .btn-outline:hover{border-color:var(--amber);background:var(--amber-lt);}
+    .abi-section{max-width:820px;margin:0 auto;padding:5rem 2rem;}
+    .abi-card{display:flex;gap:2.5rem;align-items:flex-start;background:var(--dark2);border:1px solid var(--border);padding:2.5rem;margin-bottom:3rem;}
+    .abi-avatar{width:72px;height:72px;flex-shrink:0;background:var(--amber-lt);border:2px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;}
+    .abi-meta{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--amber);margin-bottom:0.5rem;}
+    .abi-question{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-style:italic;color:var(--muted);margin-bottom:1.2rem;border-left:2px solid var(--border);padding-left:1rem;line-height:1.6;}
+    .abi-answer{font-size:0.97rem;color:var(--cream);line-height:1.9;}
+    .abi-answer p{margin-bottom:1rem;}
+    .abi-answer strong{color:var(--amber);font-weight:400;}
+    .abi-signature{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--amber);margin-top:1.2rem;}
+    .comments-toggle{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);background:none;border:none;cursor:pointer;padding:0.4rem 0;display:flex;align-items:center;gap:0.5rem;margin-top:1.5rem;transition:color 0.2s;}
+    .comments-toggle:hover{color:var(--amber);}
+    .comments-area{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);display:none;}
+    .comments-area.open{display:block;}
+    .comment{padding:0.8rem 0;border-bottom:1px solid rgba(212,132,58,0.08);font-size:0.88rem;color:var(--muted);}
+    .comment-nick{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--amber);letter-spacing:0.1em;margin-bottom:0.3rem;}
+    .cat-section{background:var(--dark2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3rem 2rem;}
+    .cat-inner{max-width:820px;margin:0 auto;}
+    .cat-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;font-style:italic;color:var(--cream);margin-bottom:1.5rem;}
+    .cat-row{display:flex;flex-wrap:wrap;gap:0.6rem;}
+    .cat-chip{border:1px solid var(--border);color:var(--amber);font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;padding:0.4rem 1rem;cursor:pointer;transition:all 0.2s;background:none;}
+    .cat-chip:hover,.cat-chip.active{background:var(--amber-lt);border-color:var(--amber);}
+    .ask-section{max-width:680px;margin:0 auto;padding:5rem 2rem;text-align:center;}
+    .ask-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:300;color:var(--cream);margin-bottom:0.6rem;}
+    .ask-sub{color:var(--muted);font-size:0.9rem;margin-bottom:2rem;line-height:1.7;}
+    .form-field{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);color:var(--cream);font-family:'Source Serif 4',serif;font-size:0.95rem;padding:0.85rem 1.2rem;margin-bottom:0.8rem;outline:none;transition:border 0.2s;}
+    .form-field:focus{border-color:var(--amber);}
+    .form-field::placeholder{color:rgba(245,239,224,0.25);}
+    textarea.form-field{min-height:120px;resize:vertical;}
+    .form-note{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.08em;color:var(--muted);margin-top:0.8rem;line-height:1.6;}
+    footer{padding:2.5rem 3rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+    .footer-logo{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1rem;color:var(--amber);}
+    .footer-note{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.08em;color:var(--muted);}
+    .footer-note a{color:inherit;opacity:0.7;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+    @media(max-width:680px){nav{padding:1rem 1.2rem;}.hero{padding:7rem 1.5rem 4rem;}.abi-card{flex-direction:column;gap:1.2rem;padding:1.5rem;}.abi-section{padding:3rem 1.2rem;}footer{padding:2rem 1.2rem;flex-direction:column;text-align:center;}}
   </style>
 </head>
 <body>
-
 <nav>
   <a href="#" class="nav-logo">Onkel<span>sorgen</span></a>
   <div class="lang-bar">
@@ -313,79 +83,62 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
     <span class="hero-eyebrow" id="h-eyebrow">Tecrübe konuşur · Erfahrung spricht · Experience speaks</span>
     <h1 class="hero-title" id="h-title">Sitrettin <em>Abi</em> sorar</h1>
-    <p class="hero-tagline" id="h-tagline">
-      "Her sorunun bir cevabı var. Bazen bir abi yeter."
-    </p>
+    <p class="hero-tagline" id="h-tagline">"Her sorunun bir cevabı var. Bazen bir abi yeter."</p>
     <div class="hero-actions">
       <a href="#sor" class="btn-primary" id="h-btn-ask">Soru Sor</a>
-      <a href="#köseler" class="btn-outline" id="h-btn-read">Köşeleri Oku</a>
+      <a href="#koseler" class="btn-outline" id="h-btn-read">Köşeleri Oku</a>
     </div>
   </div>
 </section>
 
-<!-- ABI KÖŞE YAZILARI -->
-<section class="abi-section" id="köseler">
-
-  <!-- Yazı 1 -->
+<section class="abi-section" id="koseler">
   <div class="abi-card">
     <div class="abi-avatar">🧔</div>
     <div style="flex:1">
       <div class="abi-meta" id="meta-1">Sitrettin Abi · İş & Kariyer</div>
-      <div class="abi-question" id="q-1">
-        "Almanya'da iş buldum ama patronum beni küçümsüyor gibi. Ne yapayım?"
-      </div>
+      <div class="abi-question" id="q-1">"Almanya'da iş buldum ama patronum beni küçümsüyor gibi. Ne yapayım?"</div>
       <div class="abi-answer" id="a-1">
         <p>Bak kardeşim, bu his sana yabancı değil — bana da yabancı değildi. İlk yıllarda ben de öyle bakışlara maruz kaldım. Ama şunu öğrendim: <strong>Küçümseme genellikle cehaletten gelir, kötülükten değil.</strong></p>
-        <p>Yapacağın şey basit ama zor: İşini o kadar iyi yap ki görmezden gelinmek imkânsız olsun. Almanya'da performans konuşur. Bir süre sonra o bakışlar değişir — ya saygıya dönüşür, ya da sen zaten daha iyi bir yere geçmişsindir.</p>
-        <p>Ama bir de şunu sor kendine: Bu his senden mi geliyor, yoksa gerçekten bir haksızlık mı var? İkisi çok farklı şeyler. Eğer gerçek bir haksızlık varsa, <strong>Betriebsrat</strong>'a git. Sendika var bunun için.</p>
+        <p>Yapacağın şey basit ama zor: İşini o kadar iyi yap ki görmezden gelinmek imkânsız olsun. Almanya'da performans konuşur.</p>
+        <p>Eğer gerçek bir haksızlık varsa, <strong>Betriebsrat</strong>'a git. Sendika var bunun için.</p>
         <div class="abi-signature">— Sitrettin Abi</div>
       </div>
-      <button class="comments-toggle" onclick="toggleComments('c1')">
-        💬 <span id="ct-1">3 yorum · Görüntüle</span>
-      </button>
+      <button class="comments-toggle" onclick="toggleComments('c1')">💬 <span id="ct-1">3 yorum · Görüntüle</span></button>
       <div class="comments-area" id="c1">
-        <div class="comment"><div class="comment-nick">Hüseyin_B</div>Aynen böyle yaşadım ben de. 2 yıl sonra o patron benden referans istedi 😄</div>
-        <div class="comment"><div class="comment-nick">NurtenK</div>Betriebsrat konusuna dikkat çektiğiniz için teşekkürler Abi, çoğu kişi bunun farkında değil.</div>
-        <div class="comment"><div class="comment-nick">misafir_441</div>Güzel yazı ama bazen performans yetmiyor, sistem değişmeli.</div>
+        <div class="comment"><div class="comment-nick">Hüseyin_B</div>Aynen böyle yaşadım. 2 yıl sonra o patron benden referans istedi 😄</div>
+        <div class="comment"><div class="comment-nick">NurtenK</div>Betriebsrat konusuna dikkat çektiğiniz için teşekkürler.</div>
+        <div class="comment"><div class="comment-nick">misafir_441</div>Güzel yazı ama bazen performans yetmiyor.</div>
       </div>
     </div>
   </div>
 
-  <!-- Yazı 2 -->
   <div class="abi-card">
     <div class="abi-avatar">🧔</div>
     <div style="flex:1">
       <div class="abi-meta" id="meta-2">Sitrettin Abi · Almanya & Diaspora</div>
-      <div class="abi-question" id="q-2">
-        "Ne Türk'üm ne Alman. Nereye aitim?"
-      </div>
+      <div class="abi-question" id="q-2">"Ne Türk'üm ne Alman. Nereye aitim?"</div>
       <div class="abi-answer" id="a-2">
-        <p>Bu soruyu ilk kez sorduğumda otuz yaşındaydım. Şimdi altmışımı geçtim. Ve sana söyleyeyim: <strong>Bu soru seni küçültmüyor — büyütüyor.</strong></p>
-        <p>İki kültürün içinde büyümek bir eksiklik değil, bir çoğalma. Sen iki dil düşünürsün, iki bakış açısıyla değerlendirirsin, iki müzik kulaklarında çalar. Bu bir karışıklık değil — bu bir <strong>zenginlik</strong>.</p>
-        <p>Ama biliyorum, bazen ağır geliyor. Türkiye'ye gittiğinde "Almancı" diyorlar, burada "yabancı." İkisi de yanlış. Sen ne birisin ne öbürü — ikisi de sensin. Ve zamanla göreceksin: Bu "arada kalma" hali, en özgür hal.</p>
+        <p>Bu soruyu ilk kez sorduğumda otuz yaşındaydım. Şimdi altmışımı geçtim. <strong>Bu soru seni küçültmüyor — büyütüyor.</strong></p>
+        <p>İki kültürün içinde büyümek bir eksiklik değil, bir çoğalma. Bu bir karışıklık değil — bu bir <strong>zenginlik</strong>.</p>
+        <p>Sen ne birisin ne öbürü — ikisi de sensin. Ve zamanla göreceksin: Bu "arada kalma" hali, en özgür hal.</p>
         <div class="abi-signature">— Sitrettin Abi</div>
       </div>
-      <button class="comments-toggle" onclick="toggleComments('c2')">
-        💬 <span id="ct-2">5 yorum · Görüntüle</span>
-      </button>
+      <button class="comments-toggle" onclick="toggleComments('c2')">💬 <span id="ct-2">5 yorum · Görüntüle</span></button>
       <div class="comments-area" id="c2">
         <div class="comment"><div class="comment-nick">Dilara_M</div>Ağladım okurken. 20 yıldır bu soruyu taşıyordum.</div>
         <div class="comment"><div class="comment-nick">Murat_Frankfurt</div>"İkisi de sensin" — bunu bir yere yazdım.</div>
-        <div class="comment"><div class="comment-nick">misafir_887</div>Almanya'da doğdum, Türkiye'yi hiç görmedim ama Türkçem mükemmel. Ben neyim acaba 😅</div>
-        <div class="comment"><div class="comment-nick">Fatma_H</div>Çocuklarıma da okutacağım bunu.</div>
+        <div class="comment"><div class="comment-nick">misafir_887</div>Almanya'da doğdum ama Türkçem mükemmel. Ben neyim acaba 😅</div>
+        <div class="comment"><div class="comment-nick">Fatma_H</div>Çocuklarıma da okutacağım.</div>
         <div class="comment"><div class="comment-nick">kerem_b</div>Sitrettin Abi her zaman doğruyu söyler.</div>
       </div>
     </div>
   </div>
-
 </section>
 
-<!-- KATEGORİLER -->
 <section class="cat-section" id="kategoriler">
   <div class="cat-inner">
     <h3 class="cat-title" id="cat-title-h">Ne hakkında konuşalım?</h3>
@@ -399,402 +152,162 @@
   </div>
 </section>
 
-<!-- SORU SOR -->
 <section class="ask-section" id="sor">
   <h2 class="ask-title" id="ask-title">Sitrettin Abi'ye Sor</h2>
-  <p class="ask-sub" id="ask-sub">
-    Aklındaki soru ne olursa olsun — iş, aile, Almanya hayatı, içinden çıkamadıkların. Yaz, gönder. Abi okur.
-  </p>
+  <p class="ask-sub" id="ask-sub">Aklındaki soru ne olursa olsun — iş, aile, Almanya hayatı. Yaz, gönder. Abi okur.</p>
   <form onsubmit="submitQuestion(event)">
     <input class="form-field" type="text" id="q-nick" placeholder="Takma adın (misafir de olur)" required>
-    <input class="form-field" type="email" id="q-email" placeholder="E-posta (gizli kalır, cevap için)">
+    <input class="form-field" type="email" id="q-email" placeholder="E-posta (gizli kalır)">
     <textarea class="form-field" id="q-text" placeholder="Sorun nedir?" required></textarea>
     <button type="submit" class="btn-primary" style="width:100%;" id="ask-btn">Gönder →</button>
   </form>
-  <p class="form-note" id="ask-note">
-    Sorular moderasyon sonrası yayınlanır. E-posta adresi asla görünmez.<br>
-    Sitrettin Abi her soruyu okur — cevap süresi 3-7 gün.
-  </p>
+  <p class="form-note" id="ask-note">Sorular moderasyon sonrası yayınlanır. E-posta adresi asla görünmez.<br>Sitrettin Abi her soruyu okur — cevap süresi 3-7 gün.</p>
 </section>
 
 <footer>
   <span class="footer-logo">Onkelsorgen</span>
-  <span class="footer-note" id="f-note">© 2026 PACDI · <a href="legal.html" style="color:inherit;opacity:0.7;">Impressum & Datenschutz</a> · Tüm yazılar moderatör onayından geçer · Gizlilik dostu</span>
+  <span class="footer-note" id="f-note">© 2026 PACDI · <a href="legal.html">Impressum & Datenschutz</a> · Tüm yazılar moderatör onayından geçer</span>
 </footer>
 
 <script>
 var T = {
   tr: {
-    eyebrow: "Tecrübe konuşur · Erfahrung spricht · Experience speaks",
-    title: "Sitrettin <em>Abi</em> sorar",
-    tagline: '"Her sorunun bir cevabı var. Bazen bir abi yeter."',
-    btnAsk: "Soru Sor", btnRead: "Köşeleri Oku",
-    meta1: "Sitrettin Abi · İş & Kariyer",
-    q1: '"Almanya\'da iş buldum ama patronum beni küçümsüyor gibi. Ne yapayım?"',
-    meta2: "Sitrettin Abi · Almanya & Diaspora",
-    q2: '"Ne Türk\'üm ne Alman. Nereye aitim?"',
-    catTitle: "Ne hakkında konuşalım?",
-    cats: ["💼 İş & Kariyer","❤️ İlişki & Aile","🏠 Günlük Hayat","🇩🇪 Almanya & Diaspora","💭 Her Şey"],
-    askTitle: "Sitrettin Abi'ye Sor",
-    askSub: "Aklındaki soru ne olursa olsun — iş, aile, Almanya hayatı. Yaz, gönder. Abi okur.",
-    nickPh: "Takma adın (misafir de olur)", emailPh: "E-posta (gizli kalır)", textPh: "Sorun nedir?",
-    askBtn: "Gönder →",
-    askNote: "Sorular moderasyon sonrası yayınlanır. E-posta asla görünmez.\nSitrettin Abi her soruyu okur — cevap süresi 3-7 gün.",
-    ct1: "3 yorum · Görüntüle", ct2: "5 yorum · Görüntüle",
-    fNote: "© 2026 PACDI · <a href="legal.html" style="color:inherit;opacity:0.7;">Impressum & Datenschutz</a> · Tüm yazılar moderatör onayından geçer · Gizlilik dostu"
+    eyebrow:"Tecrübe konuşur · Erfahrung spricht · Experience speaks",
+    title:"Sitrettin <em>Abi</em> sorar",
+    tagline:'"Her sorunun bir cevabı var. Bazen bir abi yeter."',
+    btnAsk:"Soru Sor",btnRead:"Köşeleri Oku",
+    meta1:"Sitrettin Abi · İş & Kariyer",
+    q1:'"Almanya\'da iş buldum ama patronum beni küçümsüyor gibi. Ne yapayım?"',
+    meta2:"Sitrettin Abi · Almanya & Diaspora",
+    q2:'"Ne Türk\'üm ne Alman. Nereye aitim?"',
+    catTitle:"Ne hakkında konuşalım?",
+    cats:["💼 İş & Kariyer","❤️ İlişki & Aile","🏠 Günlük Hayat","🇩🇪 Almanya & Diaspora","💭 Her Şey"],
+    askTitle:"Sitrettin Abi'ye Sor",
+    askSub:"Aklındaki soru ne olursa olsun — iş, aile, Almanya hayatı. Yaz, gönder. Abi okur.",
+    nickPh:"Takma adın (misafir de olur)",emailPh:"E-posta (gizli kalır)",textPh:"Sorun nedir?",
+    askBtn:"Gönder →",
+    askNote:"Sorular moderasyon sonrası yayınlanır. E-posta adresi asla görünmez.<br>Sitrettin Abi her soruyu okur — cevap süresi 3-7 gün.",
+    ct1:"3 yorum · Görüntüle",ct2:"5 yorum · Görüntüle",
+    fNote:'© 2026 PACDI · <a href="legal.html" style="color:inherit;opacity:0.7;">Impressum & Datenschutz</a> · Tüm yazılar moderatör onayından geçer'
   },
   de: {
-    eyebrow: "Erfahrung spricht · Tecrübe konuşur · Experience speaks",
-    title: "Onkel <em>Sitrettin</em> antwortet",
-    tagline: '"Jede Frage verdient eine ehrliche Antwort. Manchmal reicht ein Onkel."',
-    btnAsk: "Frage stellen", btnRead: "Kolumnen lesen",
-    meta1: "Onkel Sitrettin · Arbeit & Karriere",
-    q1: '"Ich habe einen Job in Deutschland, aber mein Chef behandelt mich von oben herab. Was soll ich tun?"',
-    meta2: "Onkel Sitrettin · Deutschland & Diaspora",
-    q2: '"Ich bin weder Türke noch Deutscher. Wohin gehöre ich?"',
-    catTitle: "Worüber sollen wir reden?",
-    cats: ["💼 Arbeit & Karriere","❤️ Beziehung & Familie","🏠 Alltag","🇩🇪 Deutschland & Diaspora","💭 Alles"],
-    askTitle: "Frag Onkel Sitrettin",
-    askSub: "Was auch immer dich beschäftigt — Arbeit, Familie, das Leben in Deutschland. Schreib es auf. Onkel liest.",
-    nickPh: "Spitzname (Gast geht auch)", emailPh: "E-Mail (bleibt privat)", textPh: "Was liegt dir auf dem Herzen?",
-    askBtn: "Senden →",
-    askNote: "Fragen werden nach Moderation veröffentlicht. E-Mail bleibt unsichtbar.\nOnkel Sitrettin liest jede Frage — Antwortzeit 3–7 Tage.",
-    ct1: "3 Kommentare · Anzeigen", ct2: "5 Kommentare · Anzeigen",
-    fNote: "© 2026 PACDI · <a href="legal.html" style="color:inherit;opacity:0.7;">Impressum & Datenschutz</a> · Alle Inhalte werden moderiert · Datenschutzfreundlich"
+    eyebrow:"Erfahrung spricht · Tecrübe konuşur · Experience speaks",
+    title:"Onkel <em>Sitrettin</em> antwortet",
+    tagline:'"Jede Frage verdient eine ehrliche Antwort. Manchmal reicht ein Onkel."',
+    btnAsk:"Frage stellen",btnRead:"Kolumnen lesen",
+    meta1:"Onkel Sitrettin · Arbeit & Karriere",
+    q1:'"Ich habe einen Job in Deutschland, aber mein Chef behandelt mich von oben herab. Was soll ich tun?"',
+    meta2:"Onkel Sitrettin · Deutschland & Diaspora",
+    q2:'"Ich bin weder Türke noch Deutscher. Wohin gehöre ich?"',
+    catTitle:"Worüber sollen wir reden?",
+    cats:["💼 Arbeit & Karriere","❤️ Beziehung & Familie","🏠 Alltag","🇩🇪 Deutschland & Diaspora","💭 Alles"],
+    askTitle:"Frag Onkel Sitrettin",
+    askSub:"Was auch immer dich beschäftigt — Arbeit, Familie, das Leben in Deutschland. Schreib es auf.",
+    nickPh:"Spitzname (Gast geht auch)",emailPh:"E-Mail (bleibt privat)",textPh:"Was liegt dir auf dem Herzen?",
+    askBtn:"Senden →",
+    askNote:"Fragen werden nach Moderation veröffentlicht. E-Mail bleibt unsichtbar.<br>Onkel Sitrettin liest jede Frage — Antwortzeit 3–7 Tage.",
+    ct1:"3 Kommentare · Anzeigen",ct2:"5 Kommentare · Anzeigen",
+    fNote:'© 2026 PACDI · <a href="legal.html" style="color:inherit;opacity:0.7;">Impressum & Datenschutz</a> · Alle Inhalte werden moderiert'
   },
   en: {
-    eyebrow: "Experience speaks · Tecrübe konuşur · Erfahrung spricht",
-    title: "Uncle <em>Sitrettin</em> answers",
-    tagline: '"Every question deserves an honest answer. Sometimes an uncle is enough."',
-    btnAsk: "Ask a Question", btnRead: "Read Columns",
-    meta1: "Uncle Sitrettin · Work & Career",
-    q1: '"I found a job in Germany but my boss seems to look down on me. What should I do?"',
-    meta2: "Uncle Sitrettin · Germany & Diaspora",
-    q2: '"I\'m neither Turkish nor German. Where do I belong?"',
-    catTitle: "What shall we talk about?",
-    cats: ["💼 Work & Career","❤️ Relationships & Family","🏠 Daily Life","🇩🇪 Germany & Diaspora","💭 Everything"],
-    askTitle: "Ask Uncle Sitrettin",
-    askSub: "Whatever is on your mind — work, family, life in Germany. Write it down. Uncle reads.",
-    nickPh: "Nickname (guest works too)", emailPh: "Email (stays private)", textPh: "What's on your mind?",
-    askBtn: "Send →",
-    askNote: "Questions are published after moderation. Email stays invisible.\nUncle Sitrettin reads every question — response time 3–7 days.",
-    ct1: "3 comments · View", ct2: "5 comments · View",
-    fNote: "© 2026 PACDI · <a href="legal.html" style="color:inherit;opacity:0.7;">Impressum & Datenschutz</a> · All content is moderated · Privacy-friendly"
+    eyebrow:"Experience speaks · Tecrübe konuşur · Erfahrung spricht",
+    title:"Uncle <em>Sitrettin</em> answers",
+    tagline:'"Every question deserves an honest answer. Sometimes an uncle is enough."',
+    btnAsk:"Ask a Question",btnRead:"Read Columns",
+    meta1:"Uncle Sitrettin · Work & Career",
+    q1:'"I found a job in Germany but my boss seems to look down on me. What should I do?"',
+    meta2:"Uncle Sitrettin · Germany & Diaspora",
+    q2:'"I\'m neither Turkish nor German. Where do I belong?"',
+    catTitle:"What shall we talk about?",
+    cats:["💼 Work & Career","❤️ Relationships & Family","🏠 Daily Life","🇩🇪 Germany & Diaspora","💭 Everything"],
+    askTitle:"Ask Uncle Sitrettin",
+    askSub:"Whatever is on your mind — work, family, life in Germany. Write it down. Uncle reads.",
+    nickPh:"Nickname (guest works too)",emailPh:"Email (stays private)",textPh:"What's on your mind?",
+    askBtn:"Send →",
+    askNote:"Questions are published after moderation. Email stays invisible.<br>Uncle Sitrettin reads every question — response time 3–7 days.",
+    ct1:"3 comments · View",ct2:"5 comments · View",
+    fNote:'© 2026 PACDI · <a href="legal.html" style="color:inherit;opacity:0.7;">Impressum & Datenschutz</a> · All content is moderated'
   }
 };
 
-var currentLang = 'tr';
+var currentLang='tr';
 
-function setLang(lang) {
-  currentLang = lang;
-  var t = T[lang];
-  document.getElementById('h-eyebrow').innerText = t.eyebrow;
-  document.getElementById('h-title').innerHTML = t.title;
-  document.getElementById('h-tagline').innerText = t.tagline;
-  document.getElementById('h-btn-ask').innerText = t.btnAsk;
-  document.getElementById('h-btn-read').innerText = t.btnRead;
-  document.getElementById('meta-1').innerText = t.meta1;
-  document.getElementById('q-1').innerText = t.q1;
-  document.getElementById('meta-2').innerText = t.meta2;
-  document.getElementById('q-2').innerText = t.q2;
-  document.getElementById('cat-title-h').innerText = t.catTitle;
-  var cats = ['cat-1','cat-2','cat-3','cat-4','cat-5'];
-  for(var i=0;i<cats.length;i++) document.getElementById(cats[i]).innerText = t.cats[i];
-  document.getElementById('ask-title').innerText = t.askTitle;
-  document.getElementById('ask-sub').innerText = t.askSub;
-  document.getElementById('q-nick').placeholder = t.nickPh;
-  document.getElementById('q-email').placeholder = t.emailPh;
-  document.getElementById('q-text').placeholder = t.textPh;
-  document.getElementById('ask-btn').innerText = t.askBtn;
-  document.getElementById('ask-note').innerText = t.askNote;
-  document.getElementById('ct-1').innerText = t.ct1;
-  document.getElementById('ct-2').innerText = t.ct2;
-  document.getElementById('f-note').innerText = t.fNote;
+function setLang(lang){
+  currentLang=lang;
+  var t=T[lang];
+  document.getElementById('h-eyebrow').innerText=t.eyebrow;
+  document.getElementById('h-title').innerHTML=t.title;
+  document.getElementById('h-tagline').innerText=t.tagline;
+  document.getElementById('h-btn-ask').innerText=t.btnAsk;
+  document.getElementById('h-btn-read').innerText=t.btnRead;
+  document.getElementById('meta-1').innerText=t.meta1;
+  document.getElementById('q-1').innerText=t.q1;
+  document.getElementById('meta-2').innerText=t.meta2;
+  document.getElementById('q-2').innerText=t.q2;
+  document.getElementById('cat-title-h').innerText=t.catTitle;
+  var cats=['cat-1','cat-2','cat-3','cat-4','cat-5'];
+  for(var i=0;i<cats.length;i++) document.getElementById(cats[i]).innerText=t.cats[i];
+  document.getElementById('ask-title').innerText=t.askTitle;
+  document.getElementById('ask-sub').innerText=t.askSub;
+  document.getElementById('q-nick').placeholder=t.nickPh;
+  document.getElementById('q-email').placeholder=t.emailPh;
+  document.getElementById('q-text').placeholder=t.textPh;
+  document.getElementById('ask-btn').innerText=t.askBtn;
+  document.getElementById('ask-note').innerHTML=t.askNote;
+  document.getElementById('ct-1').innerText=t.ct1;
+  document.getElementById('ct-2').innerText=t.ct2;
+  document.getElementById('f-note').innerHTML=t.fNote;
   ['btn-tr','btn-de','btn-en'].forEach(function(id){
     document.getElementById(id).classList.remove('active');
   });
   document.getElementById('btn-'+lang).classList.add('active');
-  document.documentElement.lang = lang;
+  document.documentElement.lang=lang;
 }
 
-function toggleComments(id) {
-  var el = document.getElementById(id);
-  el.classList.toggle('open');
+function toggleComments(id){
+  document.getElementById(id).classList.toggle('open');
 }
 
-function submitQuestion(e) {
+function submitQuestion(e){
   e.preventDefault();
-  var nick = document.getElementById('q-nick').value.trim() || 'misafir';
-  var msgs = {
-    tr: 'Teşekkürler ' + nick + '! Sorunuz alındı, moderasyon sonrası Sitrettin Abi okuyacak.',
-    de: 'Danke ' + nick + '! Ihre Frage ist eingegangen und wird nach Moderation beantwortet.',
-    en: 'Thank you ' + nick + '! Your question has been received and will be answered after moderation.'
-  };
+  var nick=document.getElementById('q-nick').value.trim()||'misafir';
+  var msgs={tr:'Teşekkürler '+nick+'! Sorunuz alındı.',de:'Danke '+nick+'! Ihre Frage ist eingegangen.',en:'Thank you '+nick+'! Your question has been received.'};
   alert(msgs[currentLang]);
   e.target.reset();
 }
 
-// Kategori chip toggle
 document.querySelectorAll('.cat-chip').forEach(function(btn){
-  btn.addEventListener('click', function(){
-    document.querySelectorAll('.cat-chip').forEach(function(b){ b.classList.remove('active'); });
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('.cat-chip').forEach(function(b){b.classList.remove('active');});
     this.classList.add('active');
   });
 });
 
 // Dil tespiti
-var ul = (navigator.language || navigator.userLanguage || '').toLowerCase();
-if(ul.indexOf('tr') === 0) setLang('tr');
-else if(ul.indexOf('de') === 0) setLang('de');
-else if(ul.indexOf('en') === 0) setLang('en');
+var ul=(navigator.language||navigator.userLanguage||'').toLowerCase();
+if(ul.indexOf('tr')===0) setLang('tr');
+else if(ul.indexOf('de')===0) setLang('de');
+else if(ul.indexOf('en')===0) setLang('en');
 else setLang('tr');
 </script>
 
-
 <script>
-/* PACDI Crisis Filter - Inline */
-/**
- * PACDI Crisis & Content Filter
- * Beichtraum · Onkelsorgen · Geduldstein
- * v1.0 — 2026
- *
- * KATMAN 1 — SERT ENGEL (moderatöre gitmez)
- * KATMAN 2 — KRİZ YÖNLENDİRME (uyarı + moderatöre bildirim)
- */
-
-(function() {
-
-  // ─── KRİZ HATLARI ───────────────────────────────────────────────
-  var CRISIS_LINES = {
-    de: [
-      { name: "Telefonseelsorge", number: "0800 111 0 111", note: "24/7 kostenlos" },
-      { name: "Nummer gegen Kummer", number: "0800 111 0 550", note: "24/7 kostenlos" }
-    ],
-    tr: [
-      { name: "ALO Psikiyatri Hattı", number: "182", note: "7/24 ücretsiz" },
-      { name: "İntiharı Önleme Hattı", number: "0800 455 0 455", note: "7/24 ücretsiz" }
-    ],
-    en: [
-      { name: "Befrienders Worldwide", number: "befrienders.org", note: "Global 24/7" },
-      { name: "Crisis Text Line", number: "Text HOME to 741741", note: "Free, 24/7" }
-    ]
-  };
-
-  // ─── KATMAN 1: SERT ENGEL KELİMELERİ ───────────────────────────
-  // Bu kelimeler tespit edildiğinde yazma DURUR, içerik gönderilmez
-  var BLOCK_WORDS = {
-
-    // İntihar / Kendine zarar verme
-    suicide: {
-      tr: ["intihar","kendimi öldür","kendime zarar","bilek kes","ilaç içeyim","son nefes","yaşamak istemiyorum","ölmek istiyorum","hayatıma son","kendimi asayım","atlayacağım","zehir içeyim"],
-      de: ["suizid","selbstmord","mich umbringen","mich töten","ich will sterben","nicht mehr leben","mir das leben nehmen","aufhören zu leben","pulsader aufschneiden","tabletten schlucken","von brücke springen"],
-      en: ["suicide","kill myself","end my life","self harm","cut myself","want to die","don't want to live","take my life","overdose","hang myself","jump off"]
-    },
-
-    // Şiddet tehdidi
-    violence: {
-      tr: ["seni öldürürüm","kanını dökerim","kafanı kırarım","yakacağım","bomba","silah","bıçaklayacağım","şiddet uygulayacağım","intikam alacağım","herkesi öldüreceğim"],
-      de: ["ich bringe dich um","ich töte dich","ich schlage dich tot","bombe","waffe","ich steche dich ab","ich zünde","rache nehmen","alle töten","ich erschieße"],
-      en: ["i will kill you","gonna kill","blow up","bomb threat","shoot everyone","stab you","burn down","take revenge","massacre","i have a gun"]
-    },
-
-    // Irkçılık / Nefret söylemi
-    hate: {
-      tr: ["zenci","göçmen defol","yabancı defol","kürt","ermeni","yahudi","ülkeni","ırkçı hakaret","katletmeli","temizlenmeli","aşağı ırk"],
-      de: ["ausländer raus","nazi","heil hitler","dreckstürke","kanake","judensau","neger","zigeuner","scheiß ausländer","untermensch","volksverhetzung","rasse"],
-      en: ["nigger","kike","spic","chink","go back to your country","white power","racial slur","ethnic cleansing","gas the","subhuman","white supremacy"]
-    },
-
-    // Toplulukları aşağılayıcı
-    discrimination: {
-      tr: ["ibne","göt","orospu","fahişe","pislik","sapık","geri zekalı","engelli hakaret","deli","kaşar","mal","gerizekalı"],
-      de: ["schwuchtel","hure","fotze","behindert als schimpfwort","vollidiot","scheiß homo","pisser","dreckstück","wichser","blöde kuh","missgeburt"],
-      en: ["faggot","whore","retard","cripple","lunatic","slut","bitch","bastard as slur","moron","idiot as slur","freak","dyke"]
-    },
-
-    // Siyasi provokasyon
-    political: {
-      tr: ["pkk","terör örgütü","devleti yık","cumhurbaşkanı öldür","erdoğan öldür","siyasi suikast","darbe","hükümeti devir","ülkeyi yak"],
-      de: ["afd heil","nazis an die macht","politiker ermorden","staatsstreich","regierung stürzen","terroranschlag","islamistisch","linksextrem","rechtsextrem angriff"],
-      en: ["kill the president","political assassination","overthrow government","terrorist attack","blow up parliament","isis","al qaeda","white nationalist attack","antifa violence"]
-    }
-  };
-
-  // ─── KATMAN 2: KRİZ YÖNLENDİRME KELİMELERİ ─────────────────────
-  // Bu kelimeler tespit edildiğinde uyarı gösterilir, içerik moderatöre gider
-  var WARN_WORDS = {
-    tr: ["artık dayanamıyorum","çok yalnızım","kimse anlamıyor","umudum yok","her şey boş","neden yaşıyorum","yoruldum hayattan","bıktım","çıkış yolu yok","karanlık","değersizim","kimseye gerek yok benim"],
-    de: ["ich halte es nicht mehr aus","ich bin so allein","niemand versteht mich","keine hoffnung mehr","alles sinnlos","warum lebe ich noch","ich bin so müde","es gibt keinen ausweg","alles dunkel","ich bin wertlos","keiner braucht mich"],
-    en: ["can't take it anymore","so alone","nobody understands","no hope left","everything is pointless","why am i alive","so tired of everything","no way out","everything is dark","i am worthless","nobody needs me"]
-  };
-
-  // ─── MESAJLAR ────────────────────────────────────────────────────
-  var MESSAGES = {
-    block: {
-      tr: "Bu içerik platformumuzun kurallarıyla bağdaşmıyor ve gönderilemez.",
-      de: "Dieser Inhalt verstößt gegen unsere Plattformregeln und kann nicht gesendet werden.",
-      en: "This content violates our platform rules and cannot be submitted."
-    },
-    crisis: {
-      tr: "Zor bir an yaşıyor olabilirsin. Yalnız değilsin — profesyonel destek almak için aşağıdaki hatlara ulaşabilirsin:",
-      de: "Du scheinst gerade eine schwere Zeit durchzumachen. Du bist nicht allein — hier findest du professionelle Hilfe:",
-      en: "It seems you may be going through a difficult time. You are not alone — please reach out for professional support:"
-    }
-  };
-
-  // ─── YARDIMCI FONKSİYONLAR ──────────────────────────────────────
-  function detectLang() {
-    var l = (navigator.language || 'de').toLowerCase();
-    if (l.startsWith('tr')) return 'tr';
-    if (l.startsWith('en')) return 'en';
-    return 'de';
-  }
-
-  function normalizeText(text) {
-    return text.toLowerCase()
-      .replace(/ğ/g,'g').replace(/ü/g,'u').replace(/ş/g,'s')
-      .replace(/ı/g,'i').replace(/ö/g,'o').replace(/ç/g,'c')
-      .replace(/ä/g,'a').replace(/ö/g,'o').replace(/ü/g,'u')
-      .replace(/[^a-z0-9\s]/g, ' ');
-  }
-
-  function checkBlock(text) {
-    var t = normalizeText(text);
-    for (var cat in BLOCK_WORDS) {
-      var langs = BLOCK_WORDS[cat];
-      for (var lang in langs) {
-        var words = langs[lang];
-        for (var i = 0; i < words.length; i++) {
-          if (t.indexOf(normalizeText(words[i])) !== -1) {
-            return true;
-          }
-        }
-      }
-    }
-    return false;
-  }
-
-  function checkWarn(text) {
-    var t = normalizeText(text);
-    for (var lang in WARN_WORDS) {
-      var words = WARN_WORDS[lang];
-      for (var i = 0; i < words.length; i++) {
-        if (t.indexOf(normalizeText(words[i])) !== -1) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-
-  function showBlockModal(lang) {
-    removeModal();
-    var modal = document.createElement('div');
-    modal.id = 'pacdi-filter-modal';
-    modal.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;';
-    modal.innerHTML =
-      '<div style="background:#1a1a2e;border:1px solid #c0392b;border-radius:12px;padding:28px;max-width:480px;width:100%;text-align:center;">' +
-      '<div style="font-size:2rem;margin-bottom:12px;">🚫</div>' +
-      '<p style="color:#e74c3c;font-size:1rem;margin-bottom:16px;line-height:1.6;">' + MESSAGES.block[lang] + '</p>' +
-      '<button onclick="document.getElementById(\'pacdi-filter-modal\').remove()" style="background:#c0392b;color:white;border:none;padding:10px 24px;border-radius:40px;cursor:pointer;font-size:0.9rem;">Kapat / Close / Schließen</button>' +
-      '</div>';
-    document.body.appendChild(modal);
-  }
-
-  function showCrisisModal(lang) {
-    removeModal();
-    var lines = CRISIS_LINES[lang] || CRISIS_LINES['de'];
-    var linesHtml = lines.map(function(l) {
-      return '<div style="background:rgba(255,255,255,0.06);border-radius:8px;padding:10px 14px;margin:6px 0;text-align:left;">' +
-        '<strong style="color:#f39c12;">' + l.name + '</strong><br>' +
-        '<span style="color:#ecf0f1;font-size:1.1rem;">' + l.number + '</span>' +
-        '<span style="color:#95a5a6;font-size:0.75rem;margin-left:8px;">' + l.note + '</span>' +
-        '</div>';
-    }).join('');
-
-    var modal = document.createElement('div');
-    modal.id = 'pacdi-filter-modal';
-    modal.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.88);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;';
-    modal.innerHTML =
-      '<div style="background:#0d1b2a;border:1px solid #2980b9;border-radius:12px;padding:28px;max-width:520px;width:100%;">' +
-      '<div style="font-size:2rem;text-align:center;margin-bottom:12px;">💙</div>' +
-      '<p style="color:#ecf0f1;font-size:0.95rem;margin-bottom:16px;line-height:1.7;text-align:center;">' + MESSAGES.crisis[lang] + '</p>' +
-      linesHtml +
-      '<div style="margin-top:16px;text-align:center;">' +
-      '<a href="https://www.befrienders.org" target="_blank" style="color:#3498db;font-size:0.85rem;">🌍 befrienders.org — Global Crisis Support</a>' +
-      '</div>' +
-      '<button onclick="document.getElementById(\'pacdi-filter-modal\').remove()" style="display:block;width:100%;margin-top:16px;background:#2980b9;color:white;border:none;padding:10px;border-radius:40px;cursor:pointer;font-size:0.9rem;">Devam Et / Continue / Weiter</button>' +
-      '</div>';
-    document.body.appendChild(modal);
-  }
-
-  function removeModal() {
-    var old = document.getElementById('pacdi-filter-modal');
-    if (old) old.remove();
-  }
-
-  // ─── ANA FONKSİYON ───────────────────────────────────────────────
-  function attachFilter(el) {
-    var lang = detectLang();
-    var blockTriggered = false;
-
-    el.addEventListener('input', function() {
-      var text = el.value;
-      if (checkBlock(text)) {
-        // Katman 1: Sert engel
-        el.value = el.value.slice(0, -1); // Son karakteri sil
-        if (!blockTriggered) {
-          blockTriggered = true;
-          showBlockModal(lang);
-          setTimeout(function() { blockTriggered = false; }, 3000);
-        }
-      } else if (checkWarn(text)) {
-        // Katman 2: Kriz yönlendirme
-        showCrisisModal(lang);
-      }
-    });
-
-    // Form submit'te de kontrol
-    var form = el.closest('form');
-    if (form) {
-      form.addEventListener('submit', function(e) {
-        if (checkBlock(el.value)) {
-          e.preventDefault();
-          e.stopImmediatePropagation();
-          showBlockModal(lang);
-          return false;
-        }
-      }, true);
-    }
-  }
-
-  // ─── SAYFA YÜKLENİNCE OTOMATIK BAĞLA ────────────────────────────
-  function init() {
-    var fields = document.querySelectorAll('textarea, input[type="text"]');
-    for (var i = 0; i < fields.length; i++) {
-      attachFilter(fields[i]);
-    }
-  }
-
-  // window.onload - tüm JS çalıştıktan sonra bağlan
-  if (document.readyState === 'complete') {
-    setTimeout(init, 100);
-  } else {
-    window.addEventListener('load', function() {
-      setTimeout(init, 100);
-    });
-  }
-
-  // Global erişim için
-  window.PACDIFilter = {
-    checkBlock: checkBlock,
-    checkWarn: checkWarn,
-    attachFilter: attachFilter
-  };
-
+(function(){
+  var CRISIS_LINES={de:[{name:"Telefonseelsorge",number:"0800 111 0 111",note:"24/7 kostenlos"},{name:"Nummer gegen Kummer",number:"0800 111 0 550",note:"24/7 kostenlos"}],tr:[{name:"ALO Psikiyatri Hattı",number:"182",note:"7/24 ücretsiz"}],en:[{name:"Befrienders Worldwide",number:"befrienders.org",note:"Global 24/7"}]};
+  var BLOCK_WORDS={suicide:{tr:["intihar","kendimi öldür","kendime zarar","ölmek istiyorum","yaşamak istemiyorum","kendimi asmak","zehir içeyim","hayatıma son"],de:["suizid","selbstmord","mich umbringen","ich will sterben","nicht mehr leben","tabletten schlucken"],en:["suicide","kill myself","end my life","want to die","hang myself","overdose"]},violence:{tr:["seni öldürürüm","kanını dökerim","bıçaklayacağım","bomba","herkesi öldüreceğim"],de:["ich töte dich","ich bringe dich um","bombe","alle töten"],en:["i will kill you","blow up","shoot everyone","bomb threat"]},hate:{tr:["zenci","göçmen defol","yabancı defol","ırkları temizlemek"],de:["ausländer raus","nazi","heil hitler","neger","untermensch"],en:["nigger","white power","ethnic cleansing","white supremacy"]},discrimination:{tr:["ibne","orospu","geri zekalı","gerizekalı"],de:["schwuchtel","hure","vollidiot","missgeburt"],en:["faggot","retard","subhuman"]},political:{tr:["pkk","darbe","hükümeti devir","cumhurbaşkanı öldür"],de:["staatsstreich","regierung stürzen","terroranschlag"],en:["kill the president","overthrow government","terrorist attack"]}};
+  var WARN_WORDS={tr:["artık dayanamıyorum","çok yalnızım","umudum yok","her şey boş","neden yaşıyorum","değersizim"],de:["ich halte es nicht mehr aus","keine hoffnung mehr","alles sinnlos","ich bin wertlos"],en:["can't take it anymore","no hope left","everything is pointless","i am worthless"]};
+  var MESSAGES={block:{tr:"Bu içerik platformumuzun kurallarıyla bağdaşmıyor.",de:"Dieser Inhalt verstößt gegen unsere Plattformregeln.",en:"This content violates our platform rules."},crisis:{tr:"Zor bir an yaşıyor olabilirsin. Yalnız değilsin:",de:"Du scheinst eine schwere Zeit durchzumachen. Du bist nicht allein:",en:"You seem to be going through a difficult time. You are not alone:"}};
+  function detectLang(){var l=(navigator.language||'').toLowerCase();if(l.indexOf('tr')===0)return'tr';if(l.indexOf('en')===0)return'en';return'de';}
+  function normalize(t){return t.toLowerCase().replace(/ğ/g,'g').replace(/ü/g,'u').replace(/ş/g,'s').replace(/ı/g,'i').replace(/ö/g,'o').replace(/ç/g,'c').replace(/ä/g,'a').replace(/ß/g,'ss').replace(/[^a-z0-9\s]/g,' ');}
+  function checkBlock(text){var t=normalize(text);for(var cat in BLOCK_WORDS){var langs=BLOCK_WORDS[cat];for(var lang in langs){var words=langs[lang];for(var i=0;i<words.length;i++){if(t.indexOf(normalize(words[i]))!==-1)return true;}}}return false;}
+  function checkWarn(text){var t=normalize(text);for(var lang in WARN_WORDS){var words=WARN_WORDS[lang];for(var i=0;i<words.length;i++){if(t.indexOf(normalize(words[i]))!==-1)return true;}}return false;}
+  function removeModal(){var o=document.getElementById('pf-modal');if(o)o.remove();}
+  function showBlock(lang){removeModal();var m=document.createElement('div');m.id='pf-modal';m.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;';m.innerHTML='<div style="background:#1a1a2e;border:1px solid #c0392b;border-radius:12px;padding:28px;max-width:480px;width:100%;text-align:center;"><div style="font-size:2rem;margin-bottom:12px;">🚫</div><p style="color:#e74c3c;font-size:1rem;margin-bottom:16px;line-height:1.6;">'+MESSAGES.block[lang]+'</p><button onclick="document.getElementById(\'pf-modal\').remove()" style="background:#c0392b;color:white;border:none;padding:10px 24px;border-radius:40px;cursor:pointer;">Kapat / Close</button></div>';document.body.appendChild(m);}
+  function showCrisis(lang){removeModal();var lines=CRISIS_LINES[lang]||CRISIS_LINES.de;var lh=lines.map(function(l){return'<div style="background:rgba(255,255,255,0.06);border-radius:8px;padding:10px;margin:6px 0;text-align:left;"><strong style="color:#f39c12;">'+l.name+'</strong><br><span style="color:#ecf0f1;">'+l.number+'</span></div>';}).join('');var m=document.createElement('div');m.id='pf-modal';m.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.88);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;';m.innerHTML='<div style="background:#0d1b2a;border:1px solid #2980b9;border-radius:12px;padding:28px;max-width:520px;width:100%;"><div style="font-size:2rem;text-align:center;margin-bottom:12px;">💙</div><p style="color:#ecf0f1;margin-bottom:16px;text-align:center;">'+MESSAGES.crisis[lang]+'</p>'+lh+'<a href="https://www.befrienders.org" target="_blank" style="display:block;text-align:center;margin-top:12px;color:#3498db;">🌍 befrienders.org</a><button onclick="document.getElementById(\'pf-modal\').remove()" style="display:block;width:100%;margin-top:16px;background:#2980b9;color:white;border:none;padding:10px;border-radius:40px;cursor:pointer;">Devam Et / Continue</button></div>';document.body.appendChild(m);}
+  function attach(el){var lang=detectLang();var triggered=false;el.addEventListener('input',function(){if(checkBlock(el.value)){el.value=el.value.slice(0,-1);if(!triggered){triggered=true;showBlock(lang);setTimeout(function(){triggered=false;},3000);}}else if(checkWarn(el.value)){showCrisis(lang);}});var form=el.closest('form');if(form){form.addEventListener('submit',function(e){if(checkBlock(el.value)){e.preventDefault();e.stopImmediatePropagation();showBlock(lang);return false;}},true);}}
+  function init(){var fields=document.querySelectorAll('textarea,input[type="text"],input[type="email"]');for(var i=0;i<fields.length;i++)attach(fields[i]);}
+  if(document.readyState==='complete'){setTimeout(init,200);}else{window.addEventListener('load',function(){setTimeout(init,200);});}
 })();
-
 </script>
 </body>
 </html>
-
