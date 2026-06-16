@@ -187,6 +187,8 @@ var T = {
     nickPh:"Takma adın (misafir de olur)",emailPh:"E-posta (gizli kalır)",textPh:"Sorun nedir?",
     askBtn:"Gönder →",
     askNote:"Sorular moderasyon sonrası yayınlanır. E-posta adresi asla görünmez.<br>Sitrettin Abi her soruyu okur — cevap süresi 3-7 gün.",
+    a1:'<p>Bak kardeşim, bu his sana yabancı değil. Ama şunu öğrendim: <strong>Küçümseme genellikle cehaletten gelir, kötülükten değil.</strong></p><p>İşini o kadar iyi yap ki görmezden gelinmek imkânsız olsun. Almanya\'da performans konuşur.</p><p>Eğer gerçek bir haksızlık varsa, <strong>Betriebsrat</strong>\'a git. Sendika var bunun için.</p><div class="abi-signature">— Sitrettin Abi</div>',
+    a2:'<p>Bu soruyu ilk kez sorduğumda otuz yaşındaydım. <strong>Bu soru seni küçültmüyor — büyütüyor.</strong></p><p>İki kültürün içinde büyümek bir eksiklik değil, bir <strong>zenginlik</strong>.</p><p>Sen ne birisin ne öbürü — ikisi de sensin. Bu "arada kalma" hali, en özgür hal.</p><div class="abi-signature">— Sitrettin Abi</div>',
     ct1:"3 yorum · Görüntüle",ct2:"5 yorum · Görüntüle",
     fNote:'© 2026 PACDI · <a href="legal.html" style="color:inherit;opacity:0.7;">Impressum & Datenschutz</a> · Tüm yazılar moderatör onayından geçer'
   },
@@ -206,6 +208,8 @@ var T = {
     nickPh:"Spitzname (Gast geht auch)",emailPh:"E-Mail (bleibt privat)",textPh:"Was liegt dir auf dem Herzen?",
     askBtn:"Senden →",
     askNote:"Fragen werden nach Moderation veröffentlicht. E-Mail bleibt unsichtbar.<br>Onkel Sitrettin liest jede Frage — Antwortzeit 3–7 Tage.",
+    a1:'<p>Das kenne ich gut — mir erging es genauso. Aber ich habe gelernt: <strong>Geringschätzung kommt meist aus Unwissenheit, nicht aus Bosheit.</strong></p><p>Mach deine Arbeit so gut, dass es unmöglich wird, dich zu ignorieren. In Deutschland spricht die Leistung.</p><p>Wenn es wirklich ungerecht ist, geh zum <strong>Betriebsrat</strong>. Dafür gibt es die Gewerkschaft.</p><div class="abi-signature">— Onkel Sitrettin</div>',
+    a2:'<p>Diese Frage habe ich mir mit dreißig gestellt. Heute bin ich über sechzig. <strong>Diese Frage macht dich nicht kleiner — sie macht dich größer.</strong></p><p>In zwei Kulturen aufzuwachsen ist kein Mangel — es ist ein <strong>Reichtum</strong>.</p><p>Du bist nicht das eine, nicht das andere — du bist beides. Und das ist die freieste Art zu sein.</p><div class="abi-signature">— Onkel Sitrettin</div>',
     ct1:"3 Kommentare · Anzeigen",ct2:"5 Kommentare · Anzeigen",
     fNote:'© 2026 PACDI · <a href="legal.html" style="color:inherit;opacity:0.7;">Impressum & Datenschutz</a> · Alle Inhalte werden moderiert'
   },
@@ -225,6 +229,8 @@ var T = {
     nickPh:"Nickname (guest works too)",emailPh:"Email (stays private)",textPh:"What's on your mind?",
     askBtn:"Send →",
     askNote:"Questions are published after moderation. Email stays invisible.<br>Uncle Sitrettin reads every question — response time 3–7 days.",
+    a1:'<p>I know this feeling well — I experienced it too in my early years. But I learned: <strong>Condescension usually comes from ignorance, not malice.</strong></p><p>Do your work so well that being ignored becomes impossible. In Germany, performance speaks.</p><p>If there is real injustice, go to the <strong>Betriebsrat</strong>. That is what the union is for.</p><div class="abi-signature">— Uncle Sitrettin</div>',
+    a2:'<p>I asked this question when I was thirty. Now I am past sixty. <strong>This question does not make you smaller — it makes you bigger.</strong></p><p>Growing up in two cultures is not a deficit — it is a <strong>richness</strong>.</p><p>You are neither one nor the other — you are both. And that is the freest way to be.</p><div class="abi-signature">— Uncle Sitrettin</div>',
     ct1:"3 comments · View",ct2:"5 comments · View",
     fNote:'© 2026 PACDI · <a href="legal.html" style="color:inherit;opacity:0.7;">Impressum & Datenschutz</a> · All content is moderated'
   }
@@ -247,6 +253,8 @@ function setLang(lang){
   document.getElementById('cat-title-h').innerText=t.catTitle;
   var cats=['cat-1','cat-2','cat-3','cat-4','cat-5'];
   for(var i=0;i<cats.length;i++) document.getElementById(cats[i]).innerText=t.cats[i];
+  document.getElementById('a-1').innerHTML=t.a1;
+  document.getElementById('a-2').innerHTML=t.a2;
   document.getElementById('ask-title').innerText=t.askTitle;
   document.getElementById('ask-sub').innerText=t.askSub;
   document.getElementById('q-nick').placeholder=t.nickPh;
