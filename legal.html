@@ -30,7 +30,7 @@
 <body>
 <div class="container">
   <nav>
-    <a href="index.html" class="back">← Zurück / Geri / Back</a>
+    <a href="index.html" class="back" id="back-btn">← Geri</a>
     <div class="lang-bar">
       <button class="lang-btn active" onclick="setLang('de')" id="btn-de">DE</button>
       <button class="lang-btn" onclick="setLang('tr')" id="btn-tr">TR</button>
@@ -135,6 +135,8 @@ function setLang(lang) {
   });
   document.getElementById('btn-'+lang).classList.add('active');
   document.documentElement.lang = lang;
+  var backBtn = document.getElementById('back-btn');
+  if(backBtn) backBtn.innerText = (lang==='tr' ? '← Geri' : lang==='de' ? '← Zurück' : '← Back');
 }
 
 var ul = (navigator.language || 'de').toLowerCase();

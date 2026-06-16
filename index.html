@@ -543,9 +543,10 @@ document.querySelectorAll('.cat-chip').forEach(function(btn){
 });
 
 // Dil tespiti
-var ul = (navigator.language || 'tr').toLowerCase();
-if(ul.startsWith('de')) setLang('de');
+var ul = (navigator.language || navigator.userLanguage || '').toLowerCase();
+if(ul.startsWith('tr')) setLang('tr');
 else if(ul.startsWith('en')) setLang('en');
+else if(ul.startsWith('de')) setLang('de');
 else setLang('tr');
 </script>
 <script src="crisis-filter.js"></script>
