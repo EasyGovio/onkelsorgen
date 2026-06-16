@@ -221,10 +221,13 @@
     }
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+  // window.onload - tüm JS çalıştıktan sonra bağlan
+  if (document.readyState === 'complete') {
+    setTimeout(init, 100);
   } else {
-    init();
+    window.addEventListener('load', function() {
+      setTimeout(init, 100);
+    });
   }
 
   // Global erişim için
