@@ -101,11 +101,9 @@
     <div style="display:flex;gap:2.5rem;align-items:flex-start;">
       <div class="abi-avatar">☕</div>
       <div style="flex:1">
-        <div class="abi-meta" id="meta-1">Sitrettin Abi · <span data-lang-inline="tr">Hikâye</span><span data-lang-inline="de">Geschichte</span><span data-lang-inline="en">Story</span></div>
+        <div class="abi-meta" id="meta-1">Sitrettin Abi · <span id="ok-cat-1">Geschichte</span></div>
         <div class="abi-question" id="q-1">
-          <span data-lang-inline="tr">Kederin ve Neşenin Dili</span>
-          <span data-lang-inline="de">Die Sprache der Trauer und der Freude</span>
-          <span data-lang-inline="en">The Language of Grief and Joy</span>
+          <span id="ok-title-1">Die Sprache der Trauer und der Freude</span>
         </div>
         <div class="abi-answer" id="a-1">
           <div data-lang="tr"><p>Bir zamanlar, bir dağ köyünde, her akşam insanlar bir çınarın altında toplanırmış. Köyün yaşlısı boş elleriyle gelir ve derdi ki: "Kederin de neşenin de dili yoktur. Onlar sadece yaşanır."</p></div>
@@ -113,11 +111,7 @@
           <div data-lang="en"><p>In a mountain village, people gathered every evening under a plane tree. The elder came with empty hands: "Grief and joy have no language. They are only lived."</p></div>
           <div class="abi-signature">— Sitrettin Abi</div>
         </div>
-        <a href="blog/kederin-nesinin-dili.html" style="display:inline-block;margin-top:1rem;font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--amber);text-decoration:none;border-bottom:1px solid rgba(212,132,58,0.3);" id="a-1-link">
-          <span data-lang-inline="tr">Devamını oku →</span>
-          <span data-lang-inline="de">Weiterlesen →</span>
-          <span data-lang-inline="en">Read more →</span>
-        </a>
+        <a href="blog/kederin-nesinin-dili.html" style="display:inline-block;margin-top:1rem;font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--amber);text-decoration:none;border-bottom:1px solid rgba(212,132,58,0.3);" id="a-1-link"><span id="ok-read-1">Weiterlesen</span></a>
       </div>
     </div>
   </div>
@@ -127,11 +121,9 @@
     <div style="display:flex;gap:2.5rem;align-items:flex-start;">
       <div class="abi-avatar">🌍</div>
       <div style="flex:1">
-        <div class="abi-meta" id="meta-2">Sitrettin Abi · <span data-lang-inline="tr">Evrensel Arşiv</span><span data-lang-inline="de">Universelles Archiv</span><span data-lang-inline="en">Universal Archive</span></div>
+        <div class="abi-meta" id="meta-2">Sitrettin Abi · <span id="ok-cat-2">Universelles Archiv</span></div>
         <div class="abi-question" id="q-2">
-          <span data-lang-inline="tr">Bir Avuç Toprak, Bir Nefes Hikâye</span>
-          <span data-lang-inline="de">Eine Handvoll Erde, ein Atemzug Geschichte</span>
-          <span data-lang-inline="en">A Handful of Earth, a Breath of Story</span>
+          <span id="ok-title-2">Eine Handvoll Erde, ein Atemzug Geschichte</span>
         </div>
         <div class="abi-answer" id="a-2">
           <div data-lang="tr"><p>Budist, Sufi, Zen, Kızılderili, Anadolu — hepsi aynı kapıya çıkar: İnsan, anlatmak için vardır. "Anlat, nefes al."</p></div>
@@ -139,11 +131,7 @@
           <div data-lang="en"><p>Buddhist, Sufi, Zen, Native American, Anatolian — all lead to the same door: humans exist to tell. "Tell. Breathe."</p></div>
           <div class="abi-signature">— Sitrettin Abi</div>
         </div>
-        <a href="blog/bir-avuc-toprak.html" style="display:inline-block;margin-top:1rem;font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--amber);text-decoration:none;border-bottom:1px solid rgba(212,132,58,0.3);" id="a-2-link">
-          <span data-lang-inline="tr">Devamını oku →</span>
-          <span data-lang-inline="de">Weiterlesen →</span>
-          <span data-lang-inline="en">Read more →</span>
-        </a>
+        <a href="blog/bir-avuc-toprak.html" style="display:inline-block;margin-top:1rem;font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--amber);text-decoration:none;border-bottom:1px solid rgba(212,132,58,0.3);" id="a-2-link"><span id="ok-read-2">Weiterlesen</span></a>
       </div>
     </div>
   </div>
@@ -270,7 +258,19 @@ var T = {
 
 var currentLang='tr';
 
-function setLang(lang){
+
+  var _okT = {
+    de: {cat1:"Geschichte", title1:"Die Sprache der Trauer und der Freude", cat2:"Universelles Archiv", title2:"Eine Handvoll Erde, ein Atemzug Geschichte", read:"Weiterlesen"},
+    tr: {cat1:"Hik\u00e2ye", title1:"Kederin ve Ne\u015fenin Dili", cat2:"Evrensel Ar\u015fiv", title2:"Bir Avu\u00e7 Toprak, Bir Nefes Hik\u00e2ye", read:"Devam\u0131n\u0131 oku"},
+    en: {cat1:"Story", title1:"The Language of Grief and Joy", cat2:"Universal Archive", title2:"A Handful of Earth, a Breath of Story", read:"Read more"}
+  };
+  function _updateBlog(lang) {
+    var t = _okT[lang]; if (!t) return;
+    var m = {"ok-cat-1":t.cat1,"ok-title-1":t.title1,"ok-cat-2":t.cat2,"ok-title-2":t.title2,"ok-read-1":t.read,"ok-read-2":t.read};
+    Object.keys(m).forEach(function(id){var el=document.getElementById(id);if(el)el.innerText=m[id];});
+  }
+  function setLang(lang){
+    _updateBlog(lang);
   currentLang=lang;
   var t=T[lang];
   document.getElementById('h-eyebrow').innerText=t.eyebrow;
