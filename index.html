@@ -253,9 +253,9 @@ var currentLang='tr';
 
   var _bl={de:"← Startseite",tr:"← Ana Sayfa",en:"← Home"};
   var _banner = {
-  de: 'Tränen haben keine Nationalität. Lachen hat keine Religion. <a href="https://geduldstein.de/blog/neden-olmasin.html" style="color:#D4843A;text-decoration:none;font-style:normal;font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;margin-left:0.8rem;">Manifest &#x2192;</a>',
-  tr: 'Gözyaşının milliyeti yok. Kahkahanın dini yok. <a href="https://geduldstein.de/blog/neden-olmasin.html" style="color:#D4843A;text-decoration:none;font-style:normal;font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;margin-left:0.8rem;">Manifesto &#x2192;</a>',
-  en: 'Tears have no nationality. Laughter has no religion. <a href="https://geduldstein.de/blog/neden-olmasin.html" style="color:#D4843A;text-decoration:none;font-style:normal;font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;margin-left:0.8rem;">Manifesto &#x2192;</a>'
+  de: `Tränen haben keine Nationalität. Lachen hat keine Religion. <a href="https://geduldstein.de/blog/neden-olmasin.html" style="color:#D4843A;text-decoration:none;font-style:normal;font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;margin-left:0.8rem;">Manifest &#x2192;</a>`,
+  tr: `Gözyaşının milliyeti yok. Kahkahanın dini yok. <a href="https://geduldstein.de/blog/neden-olmasin.html" style="color:#D4843A;text-decoration:none;font-style:normal;font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;margin-left:0.8rem;">Manifesto &#x2192;</a>`,
+  en: `Tears have no nationality. Laughter has no religion. <a href="https://geduldstein.de/blog/neden-olmasin.html" style="color:#D4843A;text-decoration:none;font-style:normal;font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;margin-left:0.8rem;">Manifesto &#x2192;</a>`
 };
   var _okT = {
     de: {cat1:"Geschichte", title1:"Die Sprache der Trauer und der Freude", cat2:"Universelles Archiv", title2:"Eine Handvoll Erde, ein Atemzug Geschichte", read:"Weiterlesen"},
@@ -272,7 +272,6 @@ var currentLang='tr';
   currentLang=lang;
     var br=document.getElementById("body-root"); if(br) br.className="lang-"+lang;
   var mt=document.getElementById("manifesto-text"); if(mt) mt.innerHTML=(_banner&&_banner[lang])||"";
-    var mt=document.getElementById("manifesto-text"); if(mt&&_banner) mt.innerHTML=_banner[lang]||_banner.de;
     var nb=document.getElementById("nav-back"); if(nb) nb.innerText=_bl[lang]||_bl.de;
   var t=T[lang];
   document.getElementById('h-eyebrow').innerText=t.eyebrow;
@@ -333,24 +332,7 @@ else if(ul.indexOf('en')===0) setLang('en');
 else setLang('tr');
 </script>
 
-<script>
-(function(){
-  var CRISIS_LINES={de:[{name:"Telefonseelsorge",number:"0800 111 0 111",note:"24/7 kostenlos"},{name:"Nummer gegen Kummer",number:"0800 111 0 550",note:"24/7 kostenlos"}],tr:[{name:"ALO Psikiyatri Hattı",number:"182",note:"7/24 ücretsiz"}],en:[{name:"Befrienders Worldwide",number:"befrienders.org",note:"Global 24/7"}]};
-  var BLOCK_WORDS={suicide:{tr:["intihar","kendimi öldür","kendime zarar","ölmek istiyorum","yaşamak istemiyorum","kendimi asmak","zehir içeyim","hayatıma son"],de:["suizid","selbstmord","mich umbringen","ich will sterben","nicht mehr leben","tabletten schlucken"],en:["suicide","kill myself","end my life","want to die","hang myself","overdose"]},violence:{tr:["seni öldürürüm","kanını dökerim","bıçaklayacağım","bomba","herkesi öldüreceğim"],de:["ich töte dich","ich bringe dich um","bombe","alle töten"],en:["i will kill you","blow up","shoot everyone","bomb threat"]},hate:{tr:["zenci","göçmen defol","yabancı defol","ırkları temizlemek"],de:["ausländer raus","nazi","heil hitler","neger","untermensch"],en:["nigger","white power","ethnic cleansing","white supremacy"]},discrimination:{tr:["ibne","orospu","geri zekalı","gerizekalı"],de:["schwuchtel","hure","vollidiot","missgeburt"],en:["faggot","retard","subhuman"]},political:{tr:["pkk","darbe","hükümeti devir","cumhurbaşkanı öldür"],de:["staatsstreich","regierung stürzen","terroranschlag"],en:["kill the president","overthrow government","terrorist attack"]}};
-  var WARN_WORDS={tr:["artık dayanamıyorum","çok yalnızım","umudum yok","her şey boş","neden yaşıyorum","değersizim"],de:["ich halte es nicht mehr aus","keine hoffnung mehr","alles sinnlos","ich bin wertlos"],en:["can't take it anymore","no hope left","everything is pointless","i am worthless"]};
-  var MESSAGES={block:{tr:"Bu içerik platformumuzun kurallarıyla bağdaşmıyor.",de:"Dieser Inhalt verstößt gegen unsere Plattformregeln.",en:"This content violates our platform rules."},crisis:{tr:"Zor bir an yaşıyor olabilirsin. Yalnız değilsin:",de:"Du scheinst eine schwere Zeit durchzumachen. Du bist nicht allein:",en:"You seem to be going through a difficult time. You are not alone:"}};
-  function detectLang(){var l=(navigator.language||'').toLowerCase();if(l.indexOf('tr')===0)return'tr';if(l.indexOf('en')===0)return'en';return'de';}
-  function normalize(t){return t.toLowerCase().replace(/ğ/g,'g').replace(/ü/g,'u').replace(/ş/g,'s').replace(/ı/g,'i').replace(/ö/g,'o').replace(/ç/g,'c').replace(/ä/g,'a').replace(/ß/g,'ss').replace(/[^a-z0-9\s]/g,' ');}
-  function checkBlock(text){var t=normalize(text);for(var cat in BLOCK_WORDS){var langs=BLOCK_WORDS[cat];for(var lang in langs){var words=langs[lang];for(var i=0;i<words.length;i++){if(t.indexOf(normalize(words[i]))!==-1)return true;}}}return false;}
-  function checkWarn(text){var t=normalize(text);for(var lang in WARN_WORDS){var words=WARN_WORDS[lang];for(var i=0;i<words.length;i++){if(t.indexOf(normalize(words[i]))!==-1)return true;}}return false;}
-  function removeModal(){var o=document.getElementById('pf-modal');if(o)o.remove();}
-  function showBlock(lang){removeModal();var m=document.createElement('div');m.id='pf-modal';m.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;';m.innerHTML='<div style="background:#1a1a2e;border:1px solid #c0392b;border-radius:12px;padding:28px;max-width:480px;width:100%;text-align:center;"><div style="font-size:2rem;margin-bottom:12px;">🚫</div><p style="color:#e74c3c;font-size:1rem;margin-bottom:16px;line-height:1.6;">'+MESSAGES.block[lang]+'</p><button onclick="document.getElementById(\'pf-modal\').remove()" style="background:#c0392b;color:white;border:none;padding:10px 24px;border-radius:40px;cursor:pointer;">Kapat / Close</button></div>';document.body.appendChild(m);}
-  function showCrisis(lang){removeModal();var lines=CRISIS_LINES[lang]||CRISIS_LINES.de;var lh=lines.map(function(l){return'<div style="background:rgba(255,255,255,0.06);border-radius:8px;padding:10px;margin:6px 0;text-align:left;"><strong style="color:#f39c12;">'+l.name+'</strong><br><span style="color:#ecf0f1;">'+l.number+'</span></div>';}).join('');var m=document.createElement('div');m.id='pf-modal';m.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.88);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;';m.innerHTML='<div style="background:#0d1b2a;border:1px solid #2980b9;border-radius:12px;padding:28px;max-width:520px;width:100%;"><div style="font-size:2rem;text-align:center;margin-bottom:12px;">💙</div><p style="color:#ecf0f1;margin-bottom:16px;text-align:center;">'+MESSAGES.crisis[lang]+'</p>'+lh+'<a href="https://www.befrienders.org" target="_blank" style="display:block;text-align:center;margin-top:12px;color:#3498db;">🌍 befrienders.org</a><button onclick="document.getElementById(\'pf-modal\').remove()" style="display:block;width:100%;margin-top:16px;background:#2980b9;color:white;border:none;padding:10px;border-radius:40px;cursor:pointer;">Devam Et / Continue</button></div>';document.body.appendChild(m);}
-  function attach(el){var lang=detectLang();var triggered=false;el.addEventListener('input',function(){if(checkBlock(el.value)){el.value=el.value.slice(0,-1);if(!triggered){triggered=true;showBlock(lang);setTimeout(function(){triggered=false;},3000);}}else if(checkWarn(el.value)){showCrisis(lang);}});var form=el.closest('form');if(form){form.addEventListener('submit',function(e){if(checkBlock(el.value)){e.preventDefault();e.stopImmediatePropagation();showBlock(lang);return false;}},true);}}
-  function init(){var fields=document.querySelectorAll('textarea,input[type="text"],input[type="email"]');for(var i=0;i<fields.length;i++)attach(fields[i]);}
-  if(document.readyState==='complete'){setTimeout(init,200);}else{window.addEventListener('load',function(){setTimeout(init,200);});}
-})();
-</script>
+
 <script src="/crisis-filter.js"></script>
 </body>
 </html>
