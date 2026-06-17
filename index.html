@@ -78,7 +78,7 @@
 </head>
 <body class="lang-de" id="body-root">
 <nav>
-  <a href="#" class="nav-logo">Onkel<span>sorgen</span></a>
+  <a id="nav-back" style="display:none;" href="#"></a><a href="#" class="nav-logo">Onkel<span>sorgen</span></a>
   <div class="lang-bar">
     <button class="lang-btn active" onclick="setLang('tr')" id="btn-tr">TR</button>
     <button class="lang-btn" onclick="setLang('de')" id="btn-de">DE</button>
@@ -252,7 +252,11 @@ var currentLang='tr';
 
 
   var _bl={de:"← Startseite",tr:"← Ana Sayfa",en:"← Home"};
-  var _banner = {"de": ""Tränen haben keine Nationalität. Lachen hat keine Religion." <a href=\"https://geduldstein.de/blog/neden-olmasin.html\" style=\"color:#D4843A;text-decoration:none;font-style:normal;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;margin-left:0.8rem;\">Manifest lesen →</a>", "tr": ""Gözyaşının milliyeti yok. Kahkahanın dini yok." <a href=\"https://geduldstein.de/blog/neden-olmasin.html\" style=\"color:#D4843A;text-decoration:none;font-style:normal;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;margin-left:0.8rem;\">Manifestoyu oku →</a>", "en": ""Tears have no nationality. Laughter has no religion." <a href=\"https://geduldstein.de/blog/neden-olmasin.html\" style=\"color:#D4843A;text-decoration:none;font-style:normal;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;margin-left:0.8rem;\">Read the manifesto →</a>"};
+  var _banner = {
+  de: 'Tränen haben keine Nationalität. Lachen hat keine Religion. <a href="https://geduldstein.de/blog/neden-olmasin.html" style="color:#D4843A;text-decoration:none;font-style:normal;font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;margin-left:0.8rem;">Manifest &#x2192;</a>',
+  tr: 'Gözyaşının milliyeti yok. Kahkahanın dini yok. <a href="https://geduldstein.de/blog/neden-olmasin.html" style="color:#D4843A;text-decoration:none;font-style:normal;font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;margin-left:0.8rem;">Manifesto &#x2192;</a>',
+  en: 'Tears have no nationality. Laughter has no religion. <a href="https://geduldstein.de/blog/neden-olmasin.html" style="color:#D4843A;text-decoration:none;font-style:normal;font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;margin-left:0.8rem;">Manifesto &#x2192;</a>'
+};
   var _okT = {
     de: {cat1:"Geschichte", title1:"Die Sprache der Trauer und der Freude", cat2:"Universelles Archiv", title2:"Eine Handvoll Erde, ein Atemzug Geschichte", read:"Weiterlesen"},
     tr: {cat1:"Hik\u00e2ye", title1:"Kederin ve Ne\u015fenin Dili", cat2:"Evrensel Ar\u015fiv", title2:"Bir Avu\u00e7 Toprak, Bir Nefes Hik\u00e2ye", read:"Devam\u0131n\u0131 oku"},
@@ -263,12 +267,7 @@ var currentLang='tr';
     var m = {"ok-cat-1":t.cat1,"ok-title-1":t.title1,"ok-cat-2":t.cat2,"ok-title-2":t.title2,"ok-read-1":t.read,"ok-read-2":t.read};
     Object.keys(m).forEach(function(id){var el=document.getElementById(id);if(el)el.innerText=m[id];});
   }
-  var _pageT = {
-    de: {"cat1": "Geschichte", "title1": "Die Sprache der Trauer und der Freude", "cat2": "Universelles Archiv", "title2": "Eine Handvoll Erde, ein Atemzug Geschichte", "read": "Weiterlesen →"},
-    tr: {"cat1": "Hikâye", "title1": "Kederin ve Neşenin Dili", "cat2": "Evrensel Arşiv", "title2": "Bir Avuç Toprak, Bir Nefes Hikâye", "read": "Devamını oku →"},
-    en: {"cat1": "Story", "title1": "The Language of Grief and Joy", "cat2": "Universal Archive", "title2": "A Handful of Earth, a Breath of Story", "read": "Read more →"}
-  };
-  function setLang(lang){
+    function setLang(lang){
     _updateBlog(lang);
   currentLang=lang;
     var br=document.getElementById("body-root"); if(br) br.className="lang-"+lang;
