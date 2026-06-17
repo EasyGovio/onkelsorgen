@@ -71,6 +71,9 @@
     .footer-note a{color:inherit;opacity:0.7;}
     @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
     @media(max-width:680px){nav{padding:1rem 1.2rem;}.hero{padding:7rem 1.5rem 4rem;}.abi-card{flex-direction:column;gap:1.2rem;padding:1.5rem;}.abi-section{padding:3rem 1.2rem;}footer{padding:2rem 1.2rem;flex-direction:column;text-align:center;}}
+  
+    #manifesto-banner a {color:#D4843A;text-decoration:none;font-style:normal;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;margin-left:0.8rem;border-bottom:1px solid rgba(212,132,58,0.2);}
+    #manifesto-banner a:hover {opacity:0.8;}
   </style>
 </head>
 <body>
@@ -82,6 +85,13 @@
     <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
   </div>
 </nav>
+
+<!-- MANIFESTO BANNER -->
+<div id="manifesto-banner" style="background:rgba(212,132,58,0.08);border-bottom:1px solid rgba(212,132,58,0.2);padding:0.55rem 2rem;text-align:center;font-family:'Source Serif 4',Georgia,serif;font-size:0.78rem;font-style:italic;color:rgba(255,255,255,0.7);position:sticky;top:0;z-index:99;backdrop-filter:blur(12px);">
+  <span data-lang="de">"Tränen haben keine Nationalität. Lachen hat keine Religion." <a href="https://geduldstein.de/blog/neden-olmasin.html">Manifest lesen →</a></span>
+  <span data-lang="tr">"Gözyaşının milliyeti yok. Kahkahanın dini yok." <a href="https://geduldstein.de/blog/neden-olmasin.html">Manifestoyu oku →</a></span>
+  <span data-lang="en">"Tears have no nationality. Laughter has no religion." <a href="https://geduldstein.de/blog/neden-olmasin.html">Read the manifesto →</a></span>
+</div>
 
 <section class="hero">
   <div class="hero-inner">
@@ -111,7 +121,7 @@
           <div data-lang="en"><p>In a mountain village, people gathered every evening under a plane tree. The elder came with empty hands: "Grief and joy have no language. They are only lived."</p></div>
           <div class="abi-signature">— Sitrettin Abi</div>
         </div>
-        <a href="blog/kederin-nesinin-dili.html" style="display:inline-block;margin-top:1rem;font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--amber);text-decoration:none;border-bottom:1px solid rgba(212,132,58,0.3);" id="a-1-link"><span id="ok-read-1">Weiterlesen</span></a>
+        <a href="blog/kederin-nesenin-dili.html" style="display:inline-block;margin-top:1rem;font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--amber);text-decoration:none;border-bottom:1px solid rgba(212,132,58,0.3);" id="a-1-link"><span id="ok-read-1">Weiterlesen</span></a>
       </div>
     </div>
   </div>
@@ -186,10 +196,16 @@
 
 <footer>
   <span class="footer-logo">Onkelsorgen</span>
-  <span class="footer-note" id="f-note">© 2026 PACDI · <a href="legal.html">Impressum & Datenschutz</a> · Tüm yazılar moderatör onayından geçer</span>
+  <span class="footer-note" id="f-note"></span>
 </footer>
 
 <script>
+  var _ft = {
+    de: "\u00a9 2026 PACDI \u00b7 <a href=\\"https://onkelsorgen.de/legal.html\\" style=\\"color:inherit;opacity:0.7;\\">Impressum &amp; Datenschutz</a> \u00b7 Alle Texte werden moderiert · Datenschutzfreundlich",
+    tr: "\u00a9 2026 PACDI \u00b7 <a href=\\"https://onkelsorgen.de/legal.html\\" style=\\"color:inherit;opacity:0.7;\\">K\u00fcnye &amp; Gizlilik</a> \u00b7 Tüm yazılar moderatör onayından geçer · Gizlilik dostu",
+    en: "\u00a9 2026 PACDI \u00b7 <a href=\\"https://onkelsorgen.de/legal.html\\" style=\\"color:inherit;opacity:0.7;\\">Imprint &amp; Privacy</a> \u00b7 All posts are moderated · Privacy-friendly"
+  };
+
 var T = {
   tr: {
     eyebrow:"Tecrübe konuşur · Erfahrung spricht · Experience speaks",
@@ -269,6 +285,11 @@ var currentLang='tr';
     var m = {"ok-cat-1":t.cat1,"ok-title-1":t.title1,"ok-cat-2":t.cat2,"ok-title-2":t.title2,"ok-read-1":t.read,"ok-read-2":t.read};
     Object.keys(m).forEach(function(id){var el=document.getElementById(id);if(el)el.innerText=m[id];});
   }
+  var _pageT = {
+    de: {"cat1": "Geschichte", "title1": "Die Sprache der Trauer und der Freude", "cat2": "Universelles Archiv", "title2": "Eine Handvoll Erde, ein Atemzug Geschichte", "read": "Weiterlesen →"},
+    tr: {"cat1": "Hikâye", "title1": "Kederin ve Neşenin Dili", "cat2": "Evrensel Arşiv", "title2": "Bir Avuç Toprak, Bir Nefes Hikâye", "read": "Devamını oku →"},
+    en: {"cat1": "Story", "title1": "The Language of Grief and Joy", "cat2": "Universal Archive", "title2": "A Handful of Earth, a Breath of Story", "read": "Read more →"}
+  };
   function setLang(lang){
     _updateBlog(lang);
   currentLang=lang;
@@ -349,5 +370,6 @@ else setLang('tr');
   if(document.readyState==='complete'){setTimeout(init,200);}else{window.addEventListener('load',function(){setTimeout(init,200);});}
 })();
 </script>
+<script src="/crisis-filter.js"></script>
 </body>
 </html>
