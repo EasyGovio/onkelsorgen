@@ -76,7 +76,7 @@
     #manifesto-banner a:hover {opacity:0.8;}
   </style>
 </head>
-<body>
+<body class="lang-de" id="body-root">
 <nav>
   <a href="#" class="nav-logo">Onkel<span>sorgen</span></a>
   <div class="lang-bar">
@@ -85,9 +85,8 @@
     <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
   </div>
 </nav>
+<div id="manifesto-banner" style="background:rgba(212,132,58,0.1);border-bottom:1px solid rgba(212,132,58,0.2);padding:0.5rem 2rem;text-align:center;font-family:'Source Serif 4',Georgia,serif;font-size:0.75rem;font-style:italic;color:rgba(255,255,255,0.72);position:relative;z-index:98;"><span id="manifesto-text"></span></div>
 
-<!-- MANIFESTO BANNER -->
-<div id="manifesto-banner" style="background:rgba(212,132,58,0.08);border-bottom:1px solid rgba(212,132,58,0.2);padding:0.55rem 2rem;text-align:center;font-family:'Source Serif 4',Georgia,serif;font-size:0.78rem;font-style:italic;color:rgba(255,255,255,0.7);position:sticky;top:0;z-index:99;backdrop-filter:blur(12px);"><span id="manifesto-text"></span></div>
 
 <section class="hero">
   <div class="hero-inner">
@@ -142,26 +141,7 @@
     </div>
   </div>
 
-  <div class="abi-card">
-    <div class="abi-avatar">🧔</div>
-    <div style="flex:1">
-      <div class="abi-meta" id="meta-2">Sitrettin Abi · Almanya & Diaspora</div>
-      <div class="abi-question" id="q-2">"Ne Türk'üm ne Alman. Nereye aitim?"</div>
-      <div class="abi-answer" id="a-2">
-        <p>Bu soruyu ilk kez sorduğumda otuz yaşındaydım. Şimdi altmışımı geçtim. <strong>Bu soru seni küçültmüyor — büyütüyor.</strong></p>
-        <p>İki kültürün içinde büyümek bir eksiklik değil, bir çoğalma. Bu bir karışıklık değil — bu bir <strong>zenginlik</strong>.</p>
-        <p>Sen ne birisin ne öbürü — ikisi de sensin. Ve zamanla göreceksin: Bu "arada kalma" hali, en özgür hal.</p>
-        <div class="abi-signature">— Sitrettin Abi</div>
-      </div>
-      <button class="comments-toggle" onclick="toggleComments('c2')">💬 <span id="ct-2">5 yorum · Görüntüle</span></button>
-      <div class="comments-area" id="c2">
-        <div class="comment"><div class="comment-nick">Dilara_M</div>Ağladım okurken. 20 yıldır bu soruyu taşıyordum.</div>
-        <div class="comment"><div class="comment-nick">Murat_Frankfurt</div>"İkisi de sensin" — bunu bir yere yazdım.</div>
-        <div class="comment"><div class="comment-nick">misafir_887</div>Almanya'da doğdum ama Türkçem mükemmel. Ben neyim acaba 😅</div>
-        <div class="comment"><div class="comment-nick">Fatma_H</div>Çocuklarıma da okutacağım.</div>
-        <div class="comment"><div class="comment-nick">kerem_b</div>Sitrettin Abi her zaman doğruyu söyler.</div>
-      </div>
-    </div>
+  
   </div>
 </section>
 
@@ -272,7 +252,7 @@ var currentLang='tr';
 
 
   var _bl={de:"← Startseite",tr:"← Ana Sayfa",en:"← Home"};
-  var _banner = {"de": "“Tränen haben keine Nationalität. Lachen hat keine Religion.” <a href=\"https://geduldstein.de/blog/neden-olmasin.html\" style=\"color:#D4843A;text-decoration:none;font-style:normal;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;margin-left:0.8rem;\">Manifest lesen →</a>", "tr": "“Gözyaşının milliyeti yok. Kahkahanın dini yok.” <a href=\"https://geduldstein.de/blog/neden-olmasin.html\" style=\"color:#D4843A;text-decoration:none;font-style:normal;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;margin-left:0.8rem;\">Manifestoyu oku →</a>", "en": "“Tears have no nationality. Laughter has no religion.” <a href=\"https://geduldstein.de/blog/neden-olmasin.html\" style=\"color:#D4843A;text-decoration:none;font-style:normal;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;margin-left:0.8rem;\">Read the manifesto →</a>"};
+  var _banner = {"de": ""Tränen haben keine Nationalität. Lachen hat keine Religion." <a href=\"https://geduldstein.de/blog/neden-olmasin.html\" style=\"color:#D4843A;text-decoration:none;font-style:normal;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;margin-left:0.8rem;\">Manifest lesen →</a>", "tr": ""Gözyaşının milliyeti yok. Kahkahanın dini yok." <a href=\"https://geduldstein.de/blog/neden-olmasin.html\" style=\"color:#D4843A;text-decoration:none;font-style:normal;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;margin-left:0.8rem;\">Manifestoyu oku →</a>", "en": ""Tears have no nationality. Laughter has no religion." <a href=\"https://geduldstein.de/blog/neden-olmasin.html\" style=\"color:#D4843A;text-decoration:none;font-style:normal;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;margin-left:0.8rem;\">Read the manifesto →</a>"};
   var _okT = {
     de: {cat1:"Geschichte", title1:"Die Sprache der Trauer und der Freude", cat2:"Universelles Archiv", title2:"Eine Handvoll Erde, ein Atemzug Geschichte", read:"Weiterlesen"},
     tr: {cat1:"Hik\u00e2ye", title1:"Kederin ve Ne\u015fenin Dili", cat2:"Evrensel Ar\u015fiv", title2:"Bir Avu\u00e7 Toprak, Bir Nefes Hik\u00e2ye", read:"Devam\u0131n\u0131 oku"},
@@ -291,6 +271,8 @@ var currentLang='tr';
   function setLang(lang){
     _updateBlog(lang);
   currentLang=lang;
+    var br=document.getElementById("body-root"); if(br) br.className="lang-"+lang;
+  var mt=document.getElementById("manifesto-text"); if(mt) mt.innerHTML=(_banner&&_banner[lang])||"";
     var mt=document.getElementById("manifesto-text"); if(mt&&_banner) mt.innerHTML=_banner[lang]||_banner.de;
     var nb=document.getElementById("nav-back"); if(nb) nb.innerText=_bl[lang]||_bl.de;
   var t=T[lang];
