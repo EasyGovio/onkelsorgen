@@ -140,26 +140,30 @@
 </footer>
 
 <script>
-  var footerNotes = {
-    de: '© 2026 PACDI · <a href='https://onkelsorgen.de/legal.html' style='color:inherit;opacity:0.7;'>Impressum &amp; Datenschutz</a> · Alle Texte werden moderiert',
-    tr: '© 2026 PACDI · <a href='https://onkelsorgen.de/legal.html' style='color:inherit;opacity:0.7;'>Künye &amp; Gizlilik</a> · Tüm yazılar moderatör onayından geçer',
-    en: '© 2026 PACDI · <a href='https://onkelsorgen.de/legal.html' style='color:inherit;opacity:0.7;'>Imprint &amp; Privacy</a> · All posts are moderated'
+  var fN = {
+    de: ["C 2026 PACDI", "https://onkelsorgen.de/legal.html", "Impressum &amp; Datenschutz", "Alle Texte werden moderiert"],
+    tr: ["C 2026 PACDI", "https://onkelsorgen.de/legal.html", "Kunye &amp; Gizlilik", "Tum yazilar moderator onayindan gecer"],
+    en: ["C 2026 PACDI", "https://onkelsorgen.de/legal.html", "Imprint &amp; Privacy", "All posts are moderated"]
   };
-  var backLabels = { de: '← Startseite', tr: '← Ana Sayfa', en: '← Home' };
+  function getFooter(lang) {
+    var d = fN[lang];
+    return d[0] + " · <a href=\"" + d[1] + "\" style=\"color:inherit;opacity:0.7;\">" + d[2] + "</a> · " + d[3];
+  }
+  var backLabels = {de: "← Startseite", tr: "← Ana Sayfa", en: "← Home"};
 
   function setLang(lang) {
-    document.getElementById('body-root').className = 'lang-' + lang;
-    document.getElementById('html-root').lang = lang;
-    ['de','tr','en'].forEach(function(l) {
-      document.getElementById('btn-' + l).classList.toggle('active', l === lang);
+    document.getElementById("body-root").className = "lang-" + lang;
+    document.getElementById("html-root").lang = lang;
+    ["de","tr","en"].forEach(function(l) {
+      document.getElementById("btn-" + l).classList.toggle("active", l === lang);
     });
-    document.getElementById('f-note').innerHTML = footerNotes[lang];
-    document.getElementById('nav-back').innerText = backLabels[lang];
+    document.getElementById("f-note").innerHTML = getFooter(lang);
+    document.getElementById("nav-back").innerText = backLabels[lang];
   }
 
   (function() {
-    var l = (navigator.language || 'de').toLowerCase();
-    var lang = l.indexOf('tr') === 0 ? 'tr' : l.indexOf('en') === 0 ? 'en' : 'de';
+    var l = (navigator.language || "de").toLowerCase();
+    var lang = l.indexOf("tr") === 0 ? "tr" : l.indexOf("en") === 0 ? "en" : "de";
     setLang(lang);
   })();
 </script>
