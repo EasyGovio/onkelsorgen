@@ -87,11 +87,7 @@
 </nav>
 
 <!-- MANIFESTO BANNER -->
-<div id="manifesto-banner" style="background:rgba(212,132,58,0.08);border-bottom:1px solid rgba(212,132,58,0.2);padding:0.55rem 2rem;text-align:center;font-family:'Source Serif 4',Georgia,serif;font-size:0.78rem;font-style:italic;color:rgba(255,255,255,0.7);position:sticky;top:0;z-index:99;backdrop-filter:blur(12px);">
-  <span data-lang="de">"Tränen haben keine Nationalität. Lachen hat keine Religion." <a href="https://geduldstein.de/blog/neden-olmasin.html">Manifest lesen →</a></span>
-  <span data-lang="tr">"Gözyaşının milliyeti yok. Kahkahanın dini yok." <a href="https://geduldstein.de/blog/neden-olmasin.html">Manifestoyu oku →</a></span>
-  <span data-lang="en">"Tears have no nationality. Laughter has no religion." <a href="https://geduldstein.de/blog/neden-olmasin.html">Read the manifesto →</a></span>
-</div>
+<div id="manifesto-banner" style="background:rgba(212,132,58,0.08);border-bottom:1px solid rgba(212,132,58,0.2);padding:0.55rem 2rem;text-align:center;font-family:'Source Serif 4',Georgia,serif;font-size:0.78rem;font-style:italic;color:rgba(255,255,255,0.7);position:sticky;top:0;z-index:99;backdrop-filter:blur(12px);"><span id="manifesto-text"></span></div>
 
 <section class="hero">
   <div class="hero-inner">
@@ -275,6 +271,8 @@ var T = {
 var currentLang='tr';
 
 
+  var _bl={de:"← Startseite",tr:"← Ana Sayfa",en:"← Home"};
+  var _banner = {"de": "“Tränen haben keine Nationalität. Lachen hat keine Religion.” <a href=\"https://geduldstein.de/blog/neden-olmasin.html\" style=\"color:#D4843A;text-decoration:none;font-style:normal;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;margin-left:0.8rem;\">Manifest lesen →</a>", "tr": "“Gözyaşının milliyeti yok. Kahkahanın dini yok.” <a href=\"https://geduldstein.de/blog/neden-olmasin.html\" style=\"color:#D4843A;text-decoration:none;font-style:normal;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;margin-left:0.8rem;\">Manifestoyu oku →</a>", "en": "“Tears have no nationality. Laughter has no religion.” <a href=\"https://geduldstein.de/blog/neden-olmasin.html\" style=\"color:#D4843A;text-decoration:none;font-style:normal;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;margin-left:0.8rem;\">Read the manifesto →</a>"};
   var _okT = {
     de: {cat1:"Geschichte", title1:"Die Sprache der Trauer und der Freude", cat2:"Universelles Archiv", title2:"Eine Handvoll Erde, ein Atemzug Geschichte", read:"Weiterlesen"},
     tr: {cat1:"Hik\u00e2ye", title1:"Kederin ve Ne\u015fenin Dili", cat2:"Evrensel Ar\u015fiv", title2:"Bir Avu\u00e7 Toprak, Bir Nefes Hik\u00e2ye", read:"Devam\u0131n\u0131 oku"},
@@ -293,6 +291,8 @@ var currentLang='tr';
   function setLang(lang){
     _updateBlog(lang);
   currentLang=lang;
+    var mt=document.getElementById("manifesto-text"); if(mt&&_banner) mt.innerHTML=_banner[lang]||_banner.de;
+    var nb=document.getElementById("nav-back"); if(nb) nb.innerText=_bl[lang]||_bl.de;
   var t=T[lang];
   document.getElementById('h-eyebrow').innerText=t.eyebrow;
   document.getElementById('h-title').innerHTML=t.title;
