@@ -72,7 +72,7 @@
     @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
     @media(max-width:680px){nav{padding:1rem 1.2rem;}.hero{padding:7rem 1.5rem 4rem;}.abi-card{flex-direction:column;gap:1.2rem;padding:1.5rem;}.abi-section{padding:3rem 1.2rem;}footer{padding:2rem 1.2rem;flex-direction:column;text-align:center;}}
   
-    #manifesto-banner a {color:#D4843A;text-decoration:none;font-style:normal;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;margin-left:0.8rem;border-bottom:1px solid rgba(212,132,58,0.2);}
+    #manifesto-banner a {color:#D4843A;text-decoration:none;font-style:normal;font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;margin-left:0.8rem;border-bottom:1px solid rgba(212,132,58,0.2);}
     #manifesto-banner a:hover {opacity:0.8;}
   </style>
 </head>
@@ -176,162 +176,229 @@
 </footer>
 
 <script>
-  var _ft = {
-    de: "\u00a9 2026 PACDI \u00b7 <a href=\\"https://onkelsorgen.de/legal.html\\" style=\\"color:inherit;opacity:0.7;\\">Impressum &amp; Datenschutz</a> \u00b7 Alle Texte werden moderiert · Datenschutzfreundlich",
-    tr: "\u00a9 2026 PACDI \u00b7 <a href=\\"https://onkelsorgen.de/legal.html\\" style=\\"color:inherit;opacity:0.7;\\">K\u00fcnye &amp; Gizlilik</a> \u00b7 Tüm yazılar moderatör onayından geçer · Gizlilik dostu",
-    en: "\u00a9 2026 PACDI \u00b7 <a href=\\"https://onkelsorgen.de/legal.html\\" style=\\"color:inherit;opacity:0.7;\\">Imprint &amp; Privacy</a> \u00b7 All posts are moderated · Privacy-friendly"
-  };
-
-var T = {
-  tr: {
-    eyebrow:"Tecrübe konuşur · Erfahrung spricht · Experience speaks",
-    title:"Sitrettin <em>Abi</em> sorar",
-    tagline:'"Her sorunun bir cevabı var. Bazen bir abi yeter."',
-    btnAsk:"Soru Sor",btnRead:"Köşeleri Oku",
-    meta1:"Sitrettin Abi · İş & Kariyer",
-    q1:'"Almanya\'da iş buldum ama patronum beni küçümsüyor gibi. Ne yapayım?"',
-    meta2:"Sitrettin Abi · Almanya & Diaspora",
-    q2:'"Ne Türk\'üm ne Alman. Nereye aitim?"',
-    catTitle:"Ne hakkında konuşalım?",
-    cats:["💼 İş & Kariyer","❤️ İlişki & Aile","🏠 Günlük Hayat","🇩🇪 Almanya & Diaspora","💭 Her Şey"],
-    askTitle:"Sitrettin Abi'ye Sor",
-    askSub:"Aklındaki soru ne olursa olsun — iş, aile, Almanya hayatı. Yaz, gönder. Abi okur.",
-    nickPh:"Takma adın (misafir de olur)",emailPh:"E-posta (gizli kalır)",textPh:"Sorun nedir?",
-    askBtn:"Gönder →",
-    askNote:"Sorular moderasyon sonrası yayınlanır. E-posta adresi asla görünmez.<br>Sitrettin Abi her soruyu okur — cevap süresi 3-7 gün.",
-    a1:'<p>Bak kardeşim, bu his sana yabancı değil. Ama şunu öğrendim: <strong>Küçümseme genellikle cehaletten gelir, kötülükten değil.</strong></p><p>İşini o kadar iyi yap ki görmezden gelinmek imkânsız olsun. Almanya\'da performans konuşur.</p><p>Eğer gerçek bir haksızlık varsa, <strong>Betriebsrat</strong>\'a git. Sendika var bunun için.</p><div class="abi-signature">— Sitrettin Abi</div>',
-    a2:'<p>Bu soruyu ilk kez sorduğumda otuz yaşındaydım. <strong>Bu soru seni küçültmüyor — büyütüyor.</strong></p><p>İki kültürün içinde büyümek bir eksiklik değil, bir <strong>zenginlik</strong>.</p><p>Sen ne birisin ne öbürü — ikisi de sensin. Bu "arada kalma" hali, en özgür hal.</p><div class="abi-signature">— Sitrettin Abi</div>',
-    ct1:"3 yorum · Görüntüle",ct2:"5 yorum · Görüntüle",
-    fNote:'© 2026 PACDI · <a href="legal.html" style="color:inherit;opacity:0.7;">Impressum & Datenschutz</a> · Tüm yazılar moderatör onayından geçer'
-  },
-  de: {
-    eyebrow:"Erfahrung spricht · Tecrübe konuşur · Experience speaks",
-    title:"Onkel <em>Sitrettin</em> antwortet",
-    tagline:'"Jede Frage verdient eine ehrliche Antwort. Manchmal reicht ein Onkel."',
-    btnAsk:"Frage stellen",btnRead:"Kolumnen lesen",
-    meta1:"Onkel Sitrettin · Arbeit & Karriere",
-    q1:'"Ich habe einen Job in Deutschland, aber mein Chef behandelt mich von oben herab. Was soll ich tun?"',
-    meta2:"Onkel Sitrettin · Deutschland & Diaspora",
-    q2:'"Ich bin weder Türke noch Deutscher. Wohin gehöre ich?"',
-    catTitle:"Worüber sollen wir reden?",
-    cats:["💼 Arbeit & Karriere","❤️ Beziehung & Familie","🏠 Alltag","🇩🇪 Deutschland & Diaspora","💭 Alles"],
-    askTitle:"Frag Onkel Sitrettin",
-    askSub:"Was auch immer dich beschäftigt — Arbeit, Familie, das Leben in Deutschland. Schreib es auf.",
-    nickPh:"Spitzname (Gast geht auch)",emailPh:"E-Mail (bleibt privat)",textPh:"Was liegt dir auf dem Herzen?",
-    askBtn:"Senden →",
-    askNote:"Fragen werden nach Moderation veröffentlicht. E-Mail bleibt unsichtbar.<br>Onkel Sitrettin liest jede Frage — Antwortzeit 3–7 Tage.",
-    a1:'<p>Das kenne ich gut — mir erging es genauso. Aber ich habe gelernt: <strong>Geringschätzung kommt meist aus Unwissenheit, nicht aus Bosheit.</strong></p><p>Mach deine Arbeit so gut, dass es unmöglich wird, dich zu ignorieren. In Deutschland spricht die Leistung.</p><p>Wenn es wirklich ungerecht ist, geh zum <strong>Betriebsrat</strong>. Dafür gibt es die Gewerkschaft.</p><div class="abi-signature">— Onkel Sitrettin</div>',
-    a2:'<p>Diese Frage habe ich mir mit dreißig gestellt. Heute bin ich über sechzig. <strong>Diese Frage macht dich nicht kleiner — sie macht dich größer.</strong></p><p>In zwei Kulturen aufzuwachsen ist kein Mangel — es ist ein <strong>Reichtum</strong>.</p><p>Du bist nicht das eine, nicht das andere — du bist beides. Und das ist die freieste Art zu sein.</p><div class="abi-signature">— Onkel Sitrettin</div>',
-    ct1:"3 Kommentare · Anzeigen",ct2:"5 Kommentare · Anzeigen",
-    fNote:'© 2026 PACDI · <a href="legal.html" style="color:inherit;opacity:0.7;">Impressum & Datenschutz</a> · Alle Inhalte werden moderiert'
-  },
-  en: {
-    eyebrow:"Experience speaks · Tecrübe konuşur · Erfahrung spricht",
-    title:"Uncle <em>Sitrettin</em> answers",
-    tagline:'"Every question deserves an honest answer. Sometimes an uncle is enough."',
-    btnAsk:"Ask a Question",btnRead:"Read Columns",
-    meta1:"Uncle Sitrettin · Work & Career",
-    q1:'"I found a job in Germany but my boss seems to look down on me. What should I do?"',
-    meta2:"Uncle Sitrettin · Germany & Diaspora",
-    q2:'"I\'m neither Turkish nor German. Where do I belong?"',
-    catTitle:"What shall we talk about?",
-    cats:["💼 Work & Career","❤️ Relationships & Family","🏠 Daily Life","🇩🇪 Germany & Diaspora","💭 Everything"],
-    askTitle:"Ask Uncle Sitrettin",
-    askSub:"Whatever is on your mind — work, family, life in Germany. Write it down. Uncle reads.",
-    nickPh:"Nickname (guest works too)",emailPh:"Email (stays private)",textPh:"What's on your mind?",
-    askBtn:"Send →",
-    askNote:"Questions are published after moderation. Email stays invisible.<br>Uncle Sitrettin reads every question — response time 3–7 days.",
-    a1:'<p>I know this feeling well — I experienced it too in my early years. But I learned: <strong>Condescension usually comes from ignorance, not malice.</strong></p><p>Do your work so well that being ignored becomes impossible. In Germany, performance speaks.</p><p>If there is real injustice, go to the <strong>Betriebsrat</strong>. That is what the union is for.</p><div class="abi-signature">— Uncle Sitrettin</div>',
-    a2:'<p>I asked this question when I was thirty. Now I am past sixty. <strong>This question does not make you smaller — it makes you bigger.</strong></p><p>Growing up in two cultures is not a deficit — it is a <strong>richness</strong>.</p><p>You are neither one nor the other — you are both. And that is the freest way to be.</p><div class="abi-signature">— Uncle Sitrettin</div>',
-    ct1:"3 comments · View",ct2:"5 comments · View",
-    fNote:'© 2026 PACDI · <a href="legal.html" style="color:inherit;opacity:0.7;">Impressum & Datenschutz</a> · All content is moderated'
-  }
-};
-
-var currentLang='tr';
-
-
-  var _bl={de:"← Startseite",tr:"← Ana Sayfa",en:"← Home"};
+  // ======== DATA ========
+  var _bl = { de: "← Startseite", tr: "← Ana Sayfa", en: "← Home" };
   var _banner = {
-  de: 'Tränen haben keine Nationalität. Lachen hat keine Religion. <a href="https://geduldstein.de/blog/neden-olmasin.html" style="color:#D4843A;text-decoration:none;font-style:normal;font-family:DM Mono,monospace;font-size:0.62rem;letter-spacing:0.1em;margin-left:0.8rem;">Manifest &#x2192;</a>',
-  tr: 'Gözyaşının milliyeti yok. Kahkahanın dini yok. <a href="https://geduldstein.de/blog/neden-olmasin.html" style="color:#D4843A;text-decoration:none;font-style:normal;font-family:DM Mono,monospace;font-size:0.62rem;letter-spacing:0.1em;margin-left:0.8rem;">Manifesto &#x2192;</a>',
-  en: 'Tears have no nationality. Laughter has no religion. <a href="https://geduldstein.de/blog/neden-olmasin.html" style="color:#D4843A;text-decoration:none;font-style:normal;font-family:DM Mono,monospace;font-size:0.62rem;letter-spacing:0.1em;margin-left:0.8rem;">Manifesto &#x2192;</a>'
-};
-  var _okT = {
-    de: {cat1:"Geschichte", title1:"Die Sprache der Trauer und der Freude", cat2:"Universelles Archiv", title2:"Eine Handvoll Erde, ein Atemzug Geschichte", read:"Weiterlesen"},
-    tr: {cat1:"Hik\u00e2ye", title1:"Kederin ve Ne\u015fenin Dili", cat2:"Evrensel Ar\u015fiv", title2:"Bir Avu\u00e7 Toprak, Bir Nefes Hik\u00e2ye", read:"Devam\u0131n\u0131 oku"},
-    en: {cat1:"Story", title1:"The Language of Grief and Joy", cat2:"Universal Archive", title2:"A Handful of Earth, a Breath of Story", read:"Read more"}
+    de: 'Tränen haben keine Nationalität. Lachen hat keine Religion. <a href="https://geduldstein.de/blog/neden-olmasin.html" style="color:#D4843A;text-decoration:none;font-style:normal;font-family:\'DM Mono\',monospace;font-size:0.62rem;letter-spacing:0.1em;margin-left:0.8rem;">Manifest →</a>',
+    tr: 'Gözyaşının milliyeti yok. Kahkahanın dini yok. <a href="https://geduldstein.de/blog/neden-olmasin.html" style="color:#D4843A;text-decoration:none;font-style:normal;font-family:\'DM Mono\',monospace;font-size:0.62rem;letter-spacing:0.1em;margin-left:0.8rem;">Manifesto →</a>',
+    en: 'Tears have no nationality. Laughter has no religion. <a href="https://geduldstein.de/blog/neden-olmasin.html" style="color:#D4843A;text-decoration:none;font-style:normal;font-family:\'DM Mono\',monospace;font-size:0.62rem;letter-spacing:0.1em;margin-left:0.8rem;">Manifesto →</a>'
   };
+
+  var _okT = {
+    de: { cat1: "Geschichte", title1: "Die Sprache der Trauer und der Freude", cat2: "Universelles Archiv", title2: "Eine Handvoll Erde, ein Atemzug Geschichte", read: "Weiterlesen", prefix: "Onkel Sitrettin · " },
+    tr: { cat1: "Hikâye", title1: "Kederin ve Neşenin Dili", cat2: "Evrensel Arşiv", title2: "Bir Avuç Toprak, Bir Nefes Hikâye", read: "Devamını oku", prefix: "Sitrettin Abi · " },
+    en: { cat1: "Story", title1: "The Language of Grief and Joy", cat2: "Universal Archive", title2: "A Handful of Earth, a Breath of Story", read: "Read more", prefix: "Uncle Sitrettin · " }
+  };
+
+  var T = {
+    tr: {
+      eyebrow: "Tecrübe konuşur · Erfahrung spricht · Experience speaks",
+      title: "Sitrettin <em>Abi</em> sorar",
+      tagline: '"Her sorunun bir cevabı var. Bazen bir abi yeter."',
+      btnAsk: "Soru Sor", btnRead: "Köşeleri Oku",
+      meta1: "Sitrettin Abi · İş & Kariyer",
+      q1: '"Almanya\'da iş buldum ama patronum beni küçümsüyor gibi. Ne yapayım?"',
+      meta2: "Sitrettin Abi · Almanya & Diaspora",
+      q2: '"Ne Türk\'üm ne Alman. Nereye aitim?"',
+      catTitle: "Ne hakkında konuşalım?",
+      cats: ["💼 İş & Kariyer", "❤️ İlişki & Aile", "🏠 Günlük Hayat", "🇩🇪 Almanya & Diaspora", "💭 Her Şey"],
+      askTitle: "Sitrettin Abi'ye Sor",
+      askSub: "Aklındaki soru ne olursa olsun — iş, aile, Almanya hayatı. Yaz, gönder. Abi okur.",
+      nickPh: "Takma adın (misafir de olur)", emailPh: "E-posta (gizli kalır)", textPh: "Sorun nedir?",
+      askBtn: "Gönder →",
+      askNote: "Sorular moderasyon sonrası yayınlanır. E-posta adresi asla görünmez.<br>Sitrettin Abi her soruyu okur — cevap süresi 3-7 gün.",
+      a1: '<p>Bak kardeşim, bu his sana yabancı değil. Ama şunu öğrendim: <strong>Küçümseme genellikle cehaletten gelir, kötülükten değil.</strong></p><p>İşini o kadar iyi yap ki görmezden gelinmek imkânsız olsun. Almanya\'da performans konuşur.</p><p>Eğer gerçek bir haksızlık varsa, <strong>Betriebsrat</strong>\'a git. Sendika var bunun için.</p><div class="abi-signature">— Sitrettin Abi</div>',
+      a2: '<p>Bu soruyu ilk kez sorduğumda otuz yaşındaydım. <strong>Bu soru seni küçültmüyor — büyütüyor.</strong></p><p>İki kültürün içinde büyümek bir eksiklik değil, bir <strong>zenginlik</strong>.</p><p>Sen ne birisin ne öbürü — ikisi de sensin. Bu "arada kalma" hali, en özgür hal.</p><div class="abi-signature">— Sitrettin Abi</div>',
+      ct1: "3 yorum · Görüntüle", ct2: "5 yorum · Görüntüle",
+      fNote: '© 2026 PACDI · <a href="legal.html" style="color:inherit;opacity:0.7;">Künye & Gizlilik</a> · Tüm yazılar moderatör onayından geçer · Gizlilik dostu'
+    },
+    de: {
+      eyebrow: "Erfahrung spricht · Tecrübe konuşur · Experience speaks",
+      title: "Onkel <em>Sitrettin</em> antwortet",
+      tagline: '"Jede Frage verdient eine ehrliche Antwort. Manchmal reicht ein Onkel."',
+      btnAsk: "Frage stellen", btnRead: "Kolumnen lesen",
+      meta1: "Onkel Sitrettin · Arbeit & Karriere",
+      q1: '"Ich habe einen Job in Deutschland, aber mein Chef behandelt mich von oben herab. Was soll ich tun?"',
+      meta2: "Onkel Sitrettin · Deutschland & Diaspora",
+      q2: '"Ich bin weder Türke noch Deutscher. Wohin gehöre ich?"',
+      catTitle: "Worüber sollen wir reden?",
+      cats: ["💼 Arbeit & Karriere", "❤️ Beziehung & Familie", "🏠 Alltag", "🇩🇪 Deutschland & Diaspora", "💭 Alles"],
+      askTitle: "Frag Onkel Sitrettin",
+      askSub: "Was auch immer dich beschäftigt — Arbeit, Familie, das Leben in Deutschland. Schreib es auf.",
+      nickPh: "Spitzname (Gast geht auch)", emailPh: "E-Mail (bleibt privat)", textPh: "Was liegt dir auf dem Herzen?",
+      askBtn: "Senden →",
+      askNote: "Fragen werden nach Moderation veröffentlicht. E-Mail bleibt unsichtbar.<br>Onkel Sitrettin liest jede Frage — Antwortzeit 3–7 Tage.",
+      a1: '<p>Das kenne ich gut — mir erging es genauso. Aber ich habe gelernt: <strong>Geringschätzung kommt meist aus Unwissenheit, nicht aus Bosheit.</strong></p><p>Mach deine Arbeit so gut, dass es unmöglich wird, dich zu ignorieren. In Deutschland spricht die Leistung.</p><p>Wenn es wirklich ungerecht ist, geh zum <strong>Betriebsrat</strong>. Dafür gibt es die Gewerkschaft.</p><div class="abi-signature">— Onkel Sitrettin</div>',
+      a2: '<p>Diese Frage habe ich mir mit dreißig gestellt. Heute bin ich über sechzig. <strong>Diese Frage macht dich nicht kleiner — sie macht dich größer.</strong></p><p>In zwei Kulturen aufzuwachsen ist kein Mangel — es ist ein <strong>Reichtum</strong>.</p><p>Du bist nicht das eine, nicht das andere — du bist beides. Und das ist die freieste Art zu sein.</p><div class="abi-signature">— Onkel Sitrettin</div>',
+      ct1: "3 Kommentare · Anzeigen", ct2: "5 Kommentare · Anzeigen",
+      fNote: '© 2026 PACDI · <a href="legal.html" style="color:inherit;opacity:0.7;">Impressum & Datenschutz</a> · Alle Inhalte werden moderiert · Datenschutzfreundlich'
+    },
+    en: {
+      eyebrow: "Experience speaks · Tecrübe konuşur · Erfahrung spricht",
+      title: "Uncle <em>Sitrettin</em> answers",
+      tagline: '"Every question deserves an honest answer. Sometimes an uncle is enough."',
+      btnAsk: "Ask a Question", btnRead: "Read Columns",
+      meta1: "Uncle Sitrettin · Work & Career",
+      q1: '"I found a job in Germany but my boss seems to look down on me. What should I do?"',
+      meta2: "Uncle Sitrettin · Germany & Diaspora",
+      q2: '"I\'m neither Turkish nor German. Where do I belong?"',
+      catTitle: "What shall we talk about?",
+      cats: ["💼 Work & Career", "❤️ Relationships & Family", "🏠 Daily Life", "🇩🇪 Germany & Diaspora", "💭 Everything"],
+      askTitle: "Ask Uncle Sitrettin",
+      askSub: "Whatever is on your mind — work, family, life in Germany. Write it down. Uncle reads.",
+      nickPh: "Nickname (guest works too)", emailPh: "Email (stays private)", textPh: "What's on your mind?",
+      askBtn: "Send →",
+      askNote: "Questions are published after moderation. Email stays invisible.<br>Uncle Sitrettin reads every question — response time 3–7 days.",
+      a1: '<p>I know this feeling well — I experienced it too in my early years. But I learned: <strong>Condescension usually comes from ignorance, not malice.</strong></p><p>Do your work so well that being ignored becomes impossible. In Germany, performance speaks.</p><p>If there is real injustice, go to the <strong>Betriebsrat</strong>. That is what the union is for.</p><div class="abi-signature">— Uncle Sitrettin</div>',
+      a2: '<p>I asked this question when I was thirty. Now I am past sixty. <strong>This question does not make you smaller — it makes you bigger.</strong></p><p>Growing up in two cultures is not a deficit — it is a <strong>richness</strong>.</p><p>You are neither one nor the other — you are both. And that is the freest way to be.</p><div class="abi-signature">— Uncle Sitrettin</div>',
+      ct1: "3 comments · View", ct2: "5 comments · View",
+      fNote: '© 2026 PACDI · <a href="legal.html" style="color:inherit;opacity:0.7;">Impressum & Datenschutz</a> · All content is moderated · Privacy-friendly'
+    }
+  };
+
+  var currentLang = 'tr';
+
+  // ======== HELPERS ========
   function _updateBlog(lang) {
-    var t = _okT[lang]; if (!t) return;
-    var m = {"ok-cat-1":t.cat1,"ok-title-1":t.title1,"ok-cat-2":t.cat2,"ok-title-2":t.title2,"ok-read-1":t.read,"ok-read-2":t.read};
-    Object.keys(m).forEach(function(id){var el=document.getElementById(id);if(el)el.innerText=m[id];});
+    var t = _okT[lang];
+    if (!t) return;
+
+    // Update category & title spans + read-more labels
+    var m = {
+      "ok-cat-1": t.cat1, "ok-title-1": t.title1,
+      "ok-cat-2": t.cat2, "ok-title-2": t.title2,
+      "ok-read-1": t.read, "ok-read-2": t.read
+    };
+    Object.keys(m).forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) el.innerText = m[id];
+    });
+
+    // Update prefix (text node) in meta-1 and meta-2 – preserve the span inside
+    ['meta-1', 'meta-2'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      var first = el.childNodes[0];
+      if (first && first.nodeType === 3) {
+        first.textContent = t.prefix;
+      }
+    });
   }
-    function setLang(lang){
+
+  // ======== SET LANGUAGE ========
+  function setLang(lang) {
+    currentLang = lang;
+
+    // Body class
+    var br = document.getElementById("body-root");
+    if (br) br.className = "lang-" + lang;
+
+    // Banner
+    var mt = document.getElementById("manifesto-text");
+    if (mt) mt.innerHTML = (_banner && _banner[lang]) || "";
+
+    // Nav back label
+    var nb = document.getElementById("nav-back");
+    if (nb) nb.innerText = _bl[lang] || _bl.de;
+
+    var t = T[lang];
+    if (!t) return;
+
+    // Hero
+    document.getElementById('h-eyebrow').innerText = t.eyebrow;
+    document.getElementById('h-title').innerHTML = t.title;
+    document.getElementById('h-tagline').innerText = t.tagline;
+    document.getElementById('h-btn-ask').innerText = t.btnAsk;
+    document.getElementById('h-btn-read').innerText = t.btnRead;
+
+    // Blog cards – ONLY update the answer content (a-1, a-2)
+    // meta, question titles and categories are handled by _updateBlog
+    document.getElementById('a-1').innerHTML = t.a1;
+    document.getElementById('a-2').innerHTML = t.a2;
+
+    // Category chips
+    var cats = ['cat-1', 'cat-2', 'cat-3', 'cat-4', 'cat-5'];
+    for (var i = 0; i < cats.length; i++) {
+      var el = document.getElementById(cats[i]);
+      if (el) el.innerText = t.cats[i];
+    }
+    document.getElementById('cat-title-h').innerText = t.catTitle;
+
+    // Ask section
+    document.getElementById('ask-title').innerText = t.askTitle;
+    document.getElementById('ask-sub').innerText = t.askSub;
+    document.getElementById('ask-btn').innerText = t.askBtn;
+    document.getElementById('ask-note').innerHTML = t.askNote;
+
+    // Form placeholders
+    var nick = document.getElementById('q-nick');
+    var email = document.getElementById('q-email');
+    var text = document.getElementById('q-text');
+    if (nick) nick.placeholder = t.nickPh;
+    if (email) email.placeholder = t.emailPh;
+    if (text) text.placeholder = t.textPh;
+
+    // Footer
+    var fn = document.getElementById('f-note');
+    if (fn) fn.innerHTML = t.fNote;
+
+    // Comment toggles
+    var ct1 = document.getElementById('ct-1');
+    var ct2 = document.getElementById('ct-2');
+    if (ct1) ct1.innerText = t.ct1;
+    if (ct2) ct2.innerText = t.ct2;
+
+    // Language button states
+    ['btn-tr', 'btn-de', 'btn-en'].forEach(function(id) {
+      document.getElementById(id).classList.remove('active');
+    });
+    document.getElementById('btn-' + lang).classList.add('active');
+
+    document.documentElement.lang = lang;
+
+    // Banner margin: push below fixed nav
+    var banner = document.getElementById('manifesto-banner');
+    if (banner) banner.style.marginTop = '4rem';
+
+    // Update blog card titles & categories (spans + prefix)
     _updateBlog(lang);
-  currentLang=lang;
-    var br=document.getElementById("body-root"); if(br) br.className="lang-"+lang;
-  var mt=document.getElementById("manifesto-text"); if(mt) mt.innerHTML=(_banner&&_banner[lang])||"";
-    var nb=document.getElementById("nav-back"); if(nb) nb.innerText=_bl[lang]||_bl.de;
-  var t=T[lang];
-  document.getElementById('h-eyebrow').innerText=t.eyebrow;
-  document.getElementById('h-title').innerHTML=t.title;
-  document.getElementById('h-tagline').innerText=t.tagline;
-  document.getElementById('h-btn-ask').innerText=t.btnAsk;
-  document.getElementById('h-btn-read').innerText=t.btnRead;
-  document.getElementById('meta-1').innerText=t.meta1;
-  document.getElementById('q-1').innerText=t.q1;
-  document.getElementById('meta-2').innerText=t.meta2;
-  document.getElementById('q-2').innerText=t.q2;
-  document.getElementById('cat-title-h').innerText=t.catTitle;
-  var cats=['cat-1','cat-2','cat-3','cat-4','cat-5'];
-  for(var i=0;i<cats.length;i++) document.getElementById(cats[i]).innerText=t.cats[i];
-  document.getElementById('a-1').innerHTML=t.a1;
-  document.getElementById('a-2').innerHTML=t.a2;
-  document.getElementById('ask-title').innerText=t.askTitle;
-  document.getElementById('ask-sub').innerText=t.askSub;
-  document.getElementById('q-nick').placeholder=t.nickPh;
-  document.getElementById('q-email').placeholder=t.emailPh;
-  document.getElementById('q-text').placeholder=t.textPh;
-  document.getElementById('ask-btn').innerText=t.askBtn;
-  document.getElementById('ask-note').innerHTML=t.askNote;
-  document.getElementById('ct-1').innerText=t.ct1;
-  document.getElementById('ct-2').innerText=t.ct2;
-  document.getElementById('f-note').innerHTML=t.fNote;
-  ['btn-tr','btn-de','btn-en'].forEach(function(id){
-    document.getElementById(id).classList.remove('active');
+  }
+
+  // ======== COMMENT TOGGLE ========
+  function toggleComments(id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.toggle('open');
+  }
+
+  // ======== FORM SUBMIT ========
+  function submitQuestion(e) {
+    e.preventDefault();
+    var nick = document.getElementById('q-nick').value.trim() || 'misafir';
+    var msgs = {
+      tr: 'Teşekkürler ' + nick + '! Sorunuz alındı.',
+      de: 'Danke ' + nick + '! Ihre Frage ist eingegangen.',
+      en: 'Thank you ' + nick + '! Your question has been received.'
+    };
+    alert(msgs[currentLang] || msgs.tr);
+    e.target.reset();
+  }
+
+  // ======== CATEGORY CHIP CLICK ========
+  document.querySelectorAll('.cat-chip').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.cat-chip').forEach(function(b) { b.classList.remove('active'); });
+      this.classList.add('active');
+    });
   });
-  document.getElementById('btn-'+lang).classList.add('active');
-  document.documentElement.lang=lang;
-}
 
-function toggleComments(id){
-  document.getElementById(id).classList.toggle('open');
-}
-
-function submitQuestion(e){
-  e.preventDefault();
-  var nick=document.getElementById('q-nick').value.trim()||'misafir';
-  var msgs={tr:'Teşekkürler '+nick+'! Sorunuz alındı.',de:'Danke '+nick+'! Ihre Frage ist eingegangen.',en:'Thank you '+nick+'! Your question has been received.'};
-  alert(msgs[currentLang]);
-  e.target.reset();
-}
-
-document.querySelectorAll('.cat-chip').forEach(function(btn){
-  btn.addEventListener('click',function(){
-    document.querySelectorAll('.cat-chip').forEach(function(b){b.classList.remove('active');});
-    this.classList.add('active');
-  });
-});
-
-// Dil tespiti
-var ul=(navigator.language||navigator.userLanguage||'').toLowerCase();
-if(ul.indexOf('tr')===0) setLang('tr');
-else if(ul.indexOf('de')===0) setLang('de');
-else if(ul.indexOf('en')===0) setLang('en');
-else setLang('tr');
+  // ======== LANGUAGE DETECTION ========
+  var ul = (navigator.language || navigator.userLanguage || '').toLowerCase();
+  var defaultLang = 'tr';
+  if (ul.indexOf('tr') === 0) defaultLang = 'tr';
+  else if (ul.indexOf('de') === 0) defaultLang = 'de';
+  else if (ul.indexOf('en') === 0) defaultLang = 'en';
+  setLang(defaultLang);
 </script>
-
 
 <script src="/crisis-filter.js"></script>
 </body>
