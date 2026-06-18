@@ -269,6 +269,11 @@ var currentLang='tr';
     Object.keys(m).forEach(function(id){var el=document.getElementById(id);if(el)el.innerText=m[id];});
   }
     function setLang(lang){
+
+    // Blog icerik goster/gizle
+    document.querySelectorAll('.abi-answer [data-lang]').forEach(function(div) {
+      div.style.display = (div.getAttribute('data-lang') === lang) ? 'block' : 'none';
+    });
     _updateBlog(lang);
   currentLang=lang;
     var br=document.getElementById("body-root"); if(br) br.className="lang-"+lang;
@@ -281,15 +286,9 @@ var currentLang='tr';
   document.getElementById('h-tagline').innerText=t.tagline;
   document.getElementById('h-btn-ask').innerText=t.btnAsk;
   document.getElementById('h-btn-read').innerText=t.btnRead;
-  document.getElementById('meta-1').innerText=t.meta1;
-  document.getElementById('q-1').innerText=t.q1;
-  document.getElementById('meta-2').innerText=t.meta2;
-  document.getElementById('q-2').innerText=t.q2;
   document.getElementById('cat-title-h').innerText=t.catTitle;
   var cats=['cat-1','cat-2','cat-3','cat-4','cat-5'];
   for(var i=0;i<cats.length;i++) document.getElementById(cats[i]).innerText=t.cats[i];
-  document.getElementById('a-1').innerHTML=t.a1;
-  document.getElementById('a-2').innerHTML=t.a2;
   document.getElementById('ask-title').innerText=t.askTitle;
   document.getElementById('ask-sub').innerText=t.askSub;
   document.getElementById('q-nick').placeholder=t.nickPh;
