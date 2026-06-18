@@ -296,9 +296,9 @@ var currentLang='tr';
   document.getElementById('q-text').placeholder=t.textPh;
   document.getElementById('ask-btn').innerText=t.askBtn;
   document.getElementById('ask-note').innerHTML=t.askNote;
-  document.getElementById('ct-1').innerText=t.ct1;
-  document.getElementById('ct-2').innerText=t.ct2;
-  document.getElementById('f-note').innerHTML=t.fNote;
+  var ct1el=document.getElementById('ct-1'); if(ct1el&&t.ct1) ct1el.innerText=t.ct1;
+  var ct2el=document.getElementById('ct-2'); if(ct2el&&t.ct2) ct2el.innerText=t.ct2;
+  var fnel=document.getElementById('f-note'); if(fnel&&t.fNote) fnel.innerHTML=t.fNote;
   ['btn-tr','btn-de','btn-en'].forEach(function(id){
     document.getElementById(id).classList.remove('active');
   });
