@@ -313,6 +313,18 @@ for root, dirs, files in os.walk('.'):
                     'Ein Service von AskMeAI Teknoloji Ltd. \u015eti.'
                 )
 
+            # ── Body flex fix: mevcut FSEK yanlış yerdeyse düzelt ──
+            import re as _re2
+            if 'pacdi-fsek' in content:
+                body_flex2 = _re2.search(r'body\s*\{[^}]*display\s*:\s*flex', content)
+                if body_flex2 and 'flex-direction:column' not in content:
+                    # body'ye flex-direction:column ekle
+                    content = _re2.sub(
+                        r'(body\s*\{[^}]*)(display\s*:\s*flex)',
+                        r'\1flex-direction:column;\2',
+                        content, count=1
+                    )
+
             # ── Body flex fix: FSEK footer yan kaymasın ──
             if 'pacdi-fsek' in content and 'display:flex' in content:
                 # Yeni versiyon
@@ -330,9 +342,20 @@ for root, dirs, files in os.walk('.'):
                     content
                 )
 
-            # ── FSEK visible footer → </body> oncesi ──
+            # ── FSEK visible footer ──
             if 'pacdi-fsek' not in content and '</body>' in content and fname not in SKIP_FOOTER:
-                content = content.replace('</body>', FSEK_FOOTER + '\n</body>', 1)
+                # Body display:flex varsa son </div> öncesine ekle (layout fix)
+                import re as _re
+                body_flex = _re.search(r'body\s*\{[^}]*display\s*:\s*flex', content)
+                if body_flex:
+                    # Son </div> + </body> pattern'ı bul
+                    last_div = content.rfind('</div>')
+                    if last_div > 0:
+                        content = content[:last_div] + FSEK_FOOTER + '\n' + content[last_div:]
+                    else:
+                        content = content.replace('</body>', FSEK_FOOTER + '\n</body>', 1)
+                else:
+                    content = content.replace('</body>', FSEK_FOOTER + '\n</body>', 1)
 
             if content != orig:
                 with open(fpath, 'w', encoding='utf-8') as f:
